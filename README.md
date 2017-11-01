@@ -60,11 +60,13 @@ Repo for a great sandwich statistic site
             - Response: 200
 
 # How to use Google Drive as CDN
-1.Login in to your gmail and access you Google drive and create a folder. Once created the folder right click on it , from the list of options select Share
-2.A Dialog Box will appear.Click on Advance (Another Dialog Box will Appear).
-3.Click on Change in front of Private – Only you can access (Another Dialog Box will Appear).
-4.Select First Option On-Public on the web and hit Save Button.
-5.Now your new folder is CDN folder and it can accessible without login
-6.Now upload your files to your CDN folder , to use files out of google drive you need File ID of each file.To Find that ID just right click on selected file that are in your shared folder and click on Share (a Dialog Box will Appear). Here you can see File ID & sharing link .Just Copy That and Use it Wherever you want.
-7.If you want to show images on your website from google drive then just copy FILE ID not whole link and use it like this :
+- 1.Login in to your gmail and access you Google drive and create a folder. Once created the folder right click on it , from the list of options select Share
+- 2.A Dialog Box will appear.Click on Advance (Another Dialog Box will Appear).
+- 3.Click on Change in front of Private – Only you can access (Another Dialog Box will Appear).
+- 4.Select First Option On-Public on the web and hit Save Button.
+- 5.Now your new folder is CDN folder and it can accessible without login
+- 6.Now upload your files to your CDN folder , to use files out of google drive you need File ID of each file.To Find that ID just right click on selected file that are in your shared folder and click on Share (a Dialog Box will Appear). Here you can see File ID & sharing link .Just Copy That and Use it Wherever you want.
+- 7.If you want to show images on your website from google drive then just copy FILE ID not whole link and use it like this :
 <img src=”https://drive.google.com/uc?export=view&id=0B7aEKHxTUkvPbEtNdDBKaVB3aGc” alt=”image from google drive"/>
+
+![PIC](https://drive.google.com/uc?export=view&id=0B-iI-ckRs-P2TUVQeENKekthTzQ)

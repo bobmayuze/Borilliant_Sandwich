@@ -24,40 +24,40 @@ Repo for a great sandwich statistic site
         - Log in
     - Endpoint implementation 
         - [0]Get bread list
-            Endpoint: GET /api/ingredient/bread
-            Authorization: public
-            Request Body: Empty
-            Response: 200
+            - Endpoint: GET /api/ingredient/bread
+            - Authorization: public
+            - Request Body: Empty
+            - Response: 200
         - [1]Get meat list
-            Endpoint: GET /api/ingredient/meat
-            Authorization: public
-            Request Body: Empty
-            Response: 200
+            - Endpoint: GET /api/ingredient/meat
+            - Authorization: public
+            - Request Body: Empty
+            - Response: 200
         - [2]Get cheese list
-            Endpoint: GET /api/ingredient/cheese
-            Authorization: public
-            Request Body: Empty
-            Response: 200
+            - Endpoint: GET /api/ingredient/cheese
+            - Authorization: public
+            - Request Body: Empty
+            - Response: 200
         - [3]Get vegetables list
-            Endpoint: GET /api/ingredient/vegetabl
-            Authorization: public
-            Request Body: Empty
-            Response: 200
+            - Endpoint: GET /api/ingredient/vegetabl
+            - Authorization: public
+            - Request Body: Empty
+            - Response: 200
         - [4]Get sauce list
-            Endpoint: GET /api/ingredient/sauce
-            Authorization: public
-            Request Body: Empty
-            Response: 200
+            - Endpoint: GET /api/ingredient/sauce
+            - Authorization: public
+            - Request Body: Empty
+            - Response: 200
         - [5]Get product list
-            Endpoint: GET /api/products
-            Authorization: public
-            Request Body: Empty
-            Response: 200
+            - Endpoint: GET /api/products
+            - Authorization: public
+            - Request Body: Empty
+            - Response: 200
         - [6]Get product by user id
-            Endpoint: GET /api/:user_id
-            Authorization: user
-            Request Body: Empty
-            Response: 200
+            - Endpoint: GET /api/:user_id
+            - Authorization: user
+            - Request Body: Empty
+            - Response: 200
 
 # How to use Google Drive as CDN
 1.Login in to your gmail and access you Google drive and create a folder. Once created the folder right click on it , from the list of options select Share

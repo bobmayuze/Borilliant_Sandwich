@@ -30,7 +30,15 @@ CREATE TABLE `tbl_combos` (
   `id` int(11) NOT NULL,
   `creater_id` int(11) NOT NULL DEFAULT '999999',
   `bread_id` int(11) NOT NULL,
-  `bread_qty` int(11) NOT NULL
+  `bread_qty` int(11) NOT NULL,
+  `meat_id` int(11) NOT NULL,
+  `meat_qty` int(11) NOT NULL,
+  `cheese_id` int(11) NOT NULL,
+  `cheese_qty` int(11) NOT NULL,
+  `vegetable_id` int(11) NOT NULL,
+  `vegetable_qty` int(11) NOT NULL,
+  `sauce_id` int(11) NOT NULL,
+  `sauce_qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -129,7 +137,12 @@ INSERT INTO `tbl_user` (`id`, `username`, `password`, `nickname`) VALUES
 ALTER TABLE `tbl_combos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `creater_id` (`creater_id`),
-  ADD KEY `bread_id` (`bread_id`);
+  ADD KEY `bread_id` (`bread_id`),
+  ADD KEY `meat_id` (`meat_id`),
+  ADD KEY `cheese_id` (`cheese_id`),
+  ADD KEY `vegetable_id` (`vegetable_id`),
+  ADD KEY `sauce_id` (`sauce_id`);
+
 
 --
 -- Indexes for table `tbl_ingredient_bread`
@@ -215,7 +228,11 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_combos`
   ADD CONSTRAINT `tbl_combos_ibfk_1` FOREIGN KEY (`creater_id`) REFERENCES `tbl_user` (`id`),
-  ADD CONSTRAINT `tbl_combos_ibfk_2` FOREIGN KEY (`bread_id`) REFERENCES `tbl_ingredient_bread` (`id`);
+  ADD CONSTRAINT `tbl_combos_ibfk_2` FOREIGN KEY (`bread_id`) REFERENCES `tbl_ingredient_bread` (`id`),
+  ADD CONSTRAINT `tbl_combos_ibfk_3` FOREIGN KEY (`meat_id`) REFERENCES `tbl_ingredient_meat` (`id`),
+  ADD CONSTRAINT `tbl_combos_ibfk_4` FOREIGN KEY (`cheese_id`) REFERENCES `tbl_ingredient_cheese` (`id`),
+  ADD CONSTRAINT `tbl_combos_ibfk_5` FOREIGN KEY (`vegetable_id`) REFERENCES `tbl_ingredient_vegetable` (`id`),
+  ADD CONSTRAINT `tbl_combos_ibfk_6` FOREIGN KEY (`sauce_id`) REFERENCES `tbl_ingredient_sauce` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -18,46 +18,53 @@ Repo for a great sandwich statistic site
 
 # TODO 
 - Backend:
+    - DB migtation
+        - tbl_ingredient_bread (Andrew)
+        - tbl_ingredient_meat (Andrew)
+        - tbl_ingredient_cheese (Chelsa)
+        - tbl_ingredient_sauce (Hangen)
+        - tbl_ingredient_bread (Hangen)
     - User framework implementaion 
         - Sign up
         - Sign out?
         - Log in
     - Endpoint implementation 
         - [0]Get bread list
-            - Endpoint: GET /api/ingredient/bread
+            - Endpoint: GET /api/ingredient/bread.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
         - [1]Get meat list
-            - Endpoint: GET /api/ingredient/meat
+            - Endpoint: GET /api/ingredient/meat.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
         - [2]Get cheese list
-            - Endpoint: GET /api/ingredient/cheese
+            - Endpoint: GET /api/ingredient/cheese.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
         - [3]Get vegetables list
-            - Endpoint: GET /api/ingredient/vegetabl
+            - Endpoint: GET /api/ingredient/vegetabl.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
         - [4]Get sauce list
-            - Endpoint: GET /api/ingredient/sauce
+            - Endpoint: GET /api/ingredient/sauce.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
         - [5]Get product list
-            - Endpoint: GET /api/products
+            - Endpoint: GET /api/products.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
         - [6]Get product by user id
-            - Endpoint: GET /api/:user_id
+            - Endpoint: GET /api/user_id.php
             - Authorization: user
             - Request Body: Empty
             - Response: 200
+
 
 # How to use Google Drive as CDN
 - 1.Login in to your gmail and access you Google drive and create a folder. Once created the folder right click on it , from the list of options select Share
@@ -70,3 +77,6 @@ Repo for a great sandwich statistic site
 <img src=”https://drive.google.com/uc?export=view&id=0B7aEKHxTUkvPbEtNdDBKaVB3aGc” alt=”image from google drive"/>
 
 ![PIC](https://drive.google.com/uc?export=view&id=0B-iI-ckRs-P2TUVQeENKekthTzQ)
+
+
+

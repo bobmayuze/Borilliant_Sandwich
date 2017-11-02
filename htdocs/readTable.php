@@ -20,7 +20,7 @@ $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
     $outp .= '{"name":"'  . $rs["name"] . '",';
-    $outp .= '"calories":"'   . $rs["calories"]        . '",';
+    $outp .= '"calories":"'   . $rs["calories"] . '"}';
 }
 $outp ='{"records":['.$outp.']}';
 $conn->close();

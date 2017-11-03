@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Material Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css'>
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+  <div ng-app="App" ng-controller="AppCtrl" layout="row" layout-fill ng-cloak>
+  <section layout="column" role="main" flex>
+
+
+
+    <section id="content" role="content" layout="column" layout-padding md-scroll-y>
+      <md-content class="md-whiteframe-z2" ng-cloak>
+        <!-- <md-list ng-repeat="list in data.content.lists"> -->
+
+          <md-list-item class="md-2-line" ng-repeat="record in data">
+            <md-checkbox ng-click="toggle(item, selected)"></md-checkbox>
+            <md-content class="md-list-item-text" layout="column">
+              <h3 class="md-body-2">{{record.name}}</h3>
+              <p class="md-caption">{{record.calories}}</p>
+            </md-content>
+            <!-- <span flex></span> -->
+            <!-- <md-icon aria-label="Show Item" ng-click="toast(item.link)">chevron_right</md-icon> -->
+            <!-- <md-divider></md-divider> -->
+          </md-list-item>
+        <!-- </md-list> -->
+      </md-content>
+    </section>
+  </section>
+  </div>
+  
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js'></script>
+  
+  <script  src="js/main.js"></script>
+
+</body>
+</html>

@@ -19,7 +19,7 @@ Repo for a great sandwich statistic site
 # TODO 
 - Backend:
     - DB migtation
-        - tbl_ingredient_bread (Andrew)
+        - tbl_ingredient_vegetable (Andrew)
         - tbl_ingredient_meat (Andrew)
         - tbl_ingredient_cheese (Chelsa)
         - tbl_ingredient_sauce (Hangen)

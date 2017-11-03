@@ -43,11 +43,11 @@ INSERT INTO `tbl_ingredient_bread` (`id`, `name`, `calories`, `pictureURL`) VALU
 (3, 'potato_bread', 85, 'https://cdn2.tmbi.com/TOH/Images/Photos/37/300x300/exps15220_RDS1338202D53A.jpg'),
 (4, 'rye_bread', 65, 'https://assets.marthastewart.com/styles/wmax-1500/d18/rye-bread-mblb2009/rye-bread-mblb2009_horiz.jpg?itok=gR0VGBrQ'),
 (5, 'gluten_free_bread', 70, 'https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/19/23/497687954.jpg'),
-(6, '###_bread', 69, 'url.ul'),
-(7, '###_bread', 69, 'url.ul'),
-(8, '###_bread', 69, 'url.ul'),
-(9, '###_bread', 69, 'url.ul'),
-(10, '###_bread', 69, 'url.ul');
+(6, 'white_wrap', 70, 'http://img.taste.com.au/xzkCGkYB/w643-h428-cfill-q90/taste/2016/11/barbecue-beef-wraps-59449-1.jpeg'),
+(7, 'wheat_wrap', 100, 'http://images.media-allrecipes.com/userphotos/960x960/3758666.jpg'),
+(8, 'spinach_wrap', 130, 'http://images.appehtite.ca/images/5287_ml%20canned%20flakes%20ham%20cheese%20spinach%20wrap.jpg'),
+(9, 'tomato_wrap', 160, 'http://www.missionmenus.com/images/recipes/57/misn_wrap_sundriedtomatobasilpestochickenwrap__medium.jpg'),
+(10, 'gluten_free_wrap', 75, 'http://beyondmeat-uploads.s3.amazonaws.com/recipes/buffalo-gluten-free-chicken-wrap/Buffalo-Gluten-Free-Wrap.jpg');
 
 --
 -- Indexes for dumped tables

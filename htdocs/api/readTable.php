@@ -14,13 +14,14 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$result = $conn->query("SELECT name, calories FROM tbl_ingredient_bread");
+$result = $conn->query("SELECT * FROM tbl_ingredient_bread");
 
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
     $outp .= '{"name":"'  . $rs["name"] . '",';
-    $outp .= '"calories":"'   . $rs["calories"] . '"}';
+    $outp .= '"calories":"'   . $rs["calories"] . '",';
+    $outp .= '"pictureURL":"'   . $rs["pictureURL"] . '"}';
 }
 $outp ='{"records":['.$outp.']}';
 $conn->close();

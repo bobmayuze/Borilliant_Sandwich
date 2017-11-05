@@ -33,3 +33,9 @@ md-content {
 .center {
 	text-align: center;
 }
+
+.section {
+	height: 100vh;
+	width: 100vw;
+	margin-bottom: 100vh;
+}

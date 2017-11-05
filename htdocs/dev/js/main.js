@@ -6,8 +6,17 @@ angular.module('App').config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default').primaryPalette('indigo');
 })
 
-angular.module('App').controller('AppCtrl', function($scope,$http) {
-  
+angular.module('App').controller('AppCtrl', function(
+    $scope,
+    $mdToast,
+    $http
+  ){
+  // toast message
+  $scope.toast = function(message) {
+    var toast = $mdToast.simple().content('You clicked ' + message).position('bottom right');
+    $mdToast.show(toast);
+  };
+  // selected elements
   $scope.selected = [];
   $scope.toggle = function(record, list) {
 
@@ -20,8 +29,41 @@ angular.module('App').controller('AppCtrl', function($scope,$http) {
   // .then(function (response) {$scope.data = response.data.records;});
   // $http.get("../api/readTable.php")
   // .then(function (response) {$scope.bata = response.data.records;});
+  $scope.data = {
+    title : "Borilliant Sandwich",
+    toolbar: {
+      buttons: [{
+        name: 'Insight',
+        icon: 'trending_up',
+        link: 'Button 1'
+      }],
+      menus: [{
+        name: 'Menu',
+        icon: 'account_circle',
+        width: '4',
+        actions: [{
+          name: 'Login/Signup',
+          message: 'Please Login first',
+          completed: true,
+          error: true
+        }, {
+          name: 'Action 2',
+          message: 'Action 2',
+          completed: false,
+          error: false
+        }, {
+          name: 'Action 3',
+          message: 'Action 3',
+          completed: true,
+          error: true
+        }]
+      }]
+    }
+
+  }
 
   $scope.testData = {
+    "ingredient_type" : "bread",
     "records": [
       {
         "name": "wheat_bread",
@@ -76,3 +118,5 @@ angular.module('App').controller('AppCtrl', function($scope,$http) {
     ]
   }
 });
+
+

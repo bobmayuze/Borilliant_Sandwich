@@ -70,7 +70,6 @@ Repo for a great sandwich statistic site
 - 7.If you want to show images on your website from google drive then just copy FILE ID not whole link and use it like this :
 <img src=”https://drive.google.com/uc?export=view&id=0B7aEKHxTUkvPbEtNdDBKaVB3aGc” alt=”image from google drive"/>
 
-![PIC](https://drive.google.com/uc?export=view&id=0B-iI-ckRs-P2TUVQeENKekthTzQ)
 
 # Progress
 1.DB migtation

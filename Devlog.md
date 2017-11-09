@@ -1,36 +1,33 @@
 # Tasks
-- Modulizing and splitting front end and backend
+- Modularize and split frontend and backend work
 - Database migration
-- Dockerized development environment
+- Dockerize development environment
 - Setup GitHub repository
 
 # Progress
-- Split the work to frontend and backend
-- Modulize backend Endpoint/API
-- Majority endpoint documentation
-- Sample endpoint implementation
-- Sample front-end implementation with AngularJs 
-- Finished majority of database migration file
+- Split the work between frontend and backend
+- Modularize backend Endpoint/API
+- Majority of the endpoint documentation completed
+- Sample endpoint implementation made
+- Sample front-end implementation made with AngularJS 
+- Finished majority of the database migration files
 - Successfully Dockerized development environment
 - Setup GitHub repository
 
 
-# Challenge We met and How did we solve it
-1.Implementation of angularjs
+# Challenges we've met and how we solved them
+1. Implementation of AngularJS
 
-It is annoying initially to setup the frontend with angularjs for some sample implementation because some angular elements like "md-content" are new to us. We solved it by using div tag instead, though this is not a proper way to do this.
+It was initially difficult to setup the frontend with AngularJS to make sample implementation because some angular elements, like "md-content", are new to us. We solved this by using "div" tags instead. This isn't the best way to solve the problem but it works. 
 
-2.Modulizing frontend and backend
+2. Modularizing frontend and backend
 
-In recent tech stacks like MEAN stack, data is mainly passed as JSON format, while in LAMP stack, we don't have the idea of JSON. It took us quite a while to come out with sample endpoint implementation for our frontend team to be using by using google and StackOverflow a lot.
+In newer tech stacks, like the MEAN stack, data is mostly passed in the JSON format. In the LAMP stack though, we don't have JSON. It took us quite a while to create a sample endpoint implementation for our frontend team because of this. We were able to solve this problem by using PHP code to collect the data from the SQL table, turn it into a JSON string, and then return the string.
 
-
-
-3. CROS, cross-origin request.
-Sometimes I have problem about cross origin request problem. I solved it by adding 
+3. CROS, Cross-Origin Request
+Sometimes we had problems with cross origin requests. We were able to solve it by adding: 
 ```
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 ```
-
-to the beginning of the PHP code to allow cross-origin access.
+to the beginning of the PHP code. This then allowed us to use cross origin requests.

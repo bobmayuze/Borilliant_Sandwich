@@ -64,7 +64,7 @@
           <md-card ng-repeat="record in breadData" class="md-card-image card" >
 		  <img ng-src ={{record.pictureURL}} alt="Smiley face" height="280px">
           <md-card-content>
-          <h3 class="md-body-2">Bread Name: {{record.name.replace('_', ' ')}}</h3>
+          <h3 class="md-body-2">Bread Name: {{record.name}}</h3>
           <p class="md-caption">Calories: {{record.calories}}</p>
           </md-card-content>
           <br>
@@ -79,7 +79,7 @@
           <md-card ng-repeat="record in meatData" class="md-card-image card" >
           <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
           <md-card-content>
-          <h3 class="md-body-2">Meat Type: {{ record.name.replace('_', ' ') }}</h3>
+          <h3 class="md-body-2">Meat: {{record.name}}</h3>
           <p class="md-caption">Calories: {{record.calories}}</p>
           </md-card-content>
           <br>
@@ -93,7 +93,7 @@
           <md-card ng-repeat="record in cheeseData" class="md-card-image card" >
           <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
           <md-card-content>
-          <h3 class="md-body-2">Cheese Type: {{record.name.replace('_', ' ')}}</h3>
+          <h3 class="md-body-2">Cheese: {{record.name}}</h3>
           <p class="md-caption">Calories: {{record.calories}}</p>
           </md-card-content>
           <br>
@@ -107,7 +107,7 @@
           <md-card ng-repeat="record in vegetableData" class="md-card-image card" >
           <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
           <md-card-content>
-          <h3 class="md-body-2">Veggie: {{record.name.replace('_', ' ')}}</h3>
+          <h3 class="md-body-2">Veggie: {{record.name}}</h3>
           <p class="md-caption">Calories: {{record.calories}}</p>
           </md-card-content>
           <br>
@@ -121,7 +121,7 @@
           <md-card ng-repeat="record in sauceData" class="md-card-image card" >
           <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
           <md-card-content>
-          <h3 class="md-body-2">Sauce: {{record.name.replace('_', ' ')}}</h3>
+          <h3 class="md-body-2">Sauce: {{record.name}}</h3>
           <p class="md-caption">Calories: {{record.calories}}</p>
           </md-card-content>
           <br>

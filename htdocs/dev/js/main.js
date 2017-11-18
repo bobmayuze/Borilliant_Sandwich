@@ -26,19 +26,45 @@ angular.module('App').controller('AppCtrl', function(
   };  
 
   $http.get("../api/ingredient/bread.php")
-    .then(function (response) {$scope.breadData = response.data.records;});
+    .then(function (response) {$scope.breadData = response.data.records;
+		$scope.breadData.forEach(function(item) {
+			item.name = item.name.replace(/_/g,' ');
+			item.name = item.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+		});
+	});
   
   $http.get("../api/ingredient/cheese.php")
-    .then(function (response) {$scope.cheeseData = response.data.records;});
+    .then(function (response) {$scope.cheeseData = response.data.records;
+		$scope.cheeseData.forEach(function(item) {
+			item.name = item.name.replace(/_/g,' ');
+			item.name = item.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+		});
+	});
   
   $http.get("../api/ingredient/meat.php")
-    .then(function (response) {$scope.meatData = response.data.records;});
+    .then(function (response) {$scope.meatData = response.data.records;
+		$scope.meatData.forEach(function(item) {
+			item.name = item.name.replace(/_/g,' ');
+			item.name = item.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+		});
+	});
   
   $http.get("../api/ingredient/vegetable.php")
-    .then(function (response) {$scope.vegetableData = response.data.records;});
+    .then(function (response) {$scope.vegetableData = response.data.records;
+		$scope.vegetableData.forEach(function(item) {
+			item.name = item.name.replace(/_/g,' ');
+			item.name = item.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+		});
+	});
   
   $http.get("../api/ingredient/sauce.php")
-    .then(function (response) {$scope.sauceData = response.data.records;});
+    .then(function (response) {
+		$scope.sauceData = response.data.records;
+		$scope.sauceData.forEach(function(item) {
+			item.name = item.name.replace(/_/g,' ');
+			item.name = item.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+		});
+	});
   
   $scope.data = {
     title : "Borilliant Sandwich",

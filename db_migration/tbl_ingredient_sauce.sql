@@ -39,7 +39,7 @@ CREATE TABLE `tbl_ingredient_sauce` (
 
 INSERT INTO `tbl_ingredient_sauce` (`id`, `name`, `calories`, `pictureURL`) VALUES
 (1, 'ranch_dressing', 73, 'https://www.jaysbakingmecrazy.com/wp-content/uploads/2016/01/paleo_ranch2.jpg'),
-(2, 'caesar_dressing"', 78, 'https://target.scene7.com/is/image/Target/12946485?wid=520&hei=520&fmt=pjpeg'),
+(2, 'caesar_dressing', 78, 'https://target.scene7.com/is/image/Target/12946485?wid=520&hei=520&fmt=pjpeg'),
 (3, 'blue_cheese_dressing', 70, 'https://i5.walmartimages.com/asr/def10768-4e00-4f82-80f7-3fcdf1e163ab_1.8b796cba97178720ccbfa038715ca0d5.jpeg'),
 (4, 'thousand_island_dressing', 58, 'http://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/10/7/0/FNK_Thousand-Island-Dressing_s4x3.jpg.rend.hgtvcom.616.462.suffix/1383814622263.jpeg'),
 (5, 'italian_dressing', 130, 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Italian_dressing.jpg'),

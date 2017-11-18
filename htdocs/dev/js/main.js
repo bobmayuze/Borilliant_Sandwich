@@ -25,10 +25,21 @@ angular.module('App').controller('AppCtrl', function(
     else list.push(record);
   };  
 
-  // $http.get("../api/readTable.php")
-  // .then(function (response) {$scope.data = response.data.records;});
-  // $http.get("../api/readTable.php")
-  // .then(function (response) {$scope.bata = response.data.records;});
+  $http.get("../api/ingredient/bread.php")
+    .then(function (response) {$scope.breadData = response.data.records;});
+  
+  $http.get("../api/ingredient/cheese.php")
+    .then(function (response) {$scope.cheeseData = response.data.records;});
+  
+  $http.get("../api/ingredient/meat.php")
+    .then(function (response) {$scope.meatData = response.data.records;});
+  
+  $http.get("../api/ingredient/vegetable.php")
+    .then(function (response) {$scope.vegetableData = response.data.records;});
+  
+  $http.get("../api/ingredient/sauce.php")
+    .then(function (response) {$scope.sauceData = response.data.records;});
+  
   $scope.data = {
     title : "Borilliant Sandwich",
     toolbar: {

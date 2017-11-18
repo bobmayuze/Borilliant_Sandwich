@@ -2,13 +2,15 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Angular Material Dashboard</title>
+  <title>Borilliant!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css'>
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
   <link rel="stylesheet" href="css/style.css">
 
+  
+  
 </head>
 
 <body>
@@ -59,8 +61,8 @@
       <h1 class="center">BREAD</h1>
       <div class="md-whiteframe-z2"  ng-cloak> 
         <div class="center">
-          <md-card ng-repeat="record in testData.records" class="md-card-image card" >
-          <img src={{record.pictureURL}} alt="Smiley face" height="280px">
+          <md-card ng-repeat="record in breadData" class="md-card-image card" >
+		  <img ng-src ={{record.pictureURL}} alt="Smiley face" height="280px">
           <md-card-content>
           <h3 class="md-body-2">Bread Name: {{record.name}}</h3>
           <p class="md-caption">Calories: {{record.calories}}</p>
@@ -70,21 +72,62 @@
         </div>
         
       </div>
-
-      <!-- <h1 class="center">BREAD</h1>
+	  <br>
+      <h1 class="center">Meat</h1>
       <div class="md-whiteframe-z2"  ng-cloak> 
         <div class="center">
-          <md-card ng-repeat="record in testData.records" class="md-card-image card" >
-          <img src={{record.pictureURL}} alt="Smiley face" height="280px">
+          <md-card ng-repeat="record in meatData" class="md-card-image card" >
+          <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
           <md-card-content>
-          <h3 class="md-body-2">Bread Name: {{record.name}}</h3>
+          <h3 class="md-body-2">Meat Type: {{record.name}}</h3>
           <p class="md-caption">Calories: {{record.calories}}</p>
           </md-card-content>
           <br>
           </md-card>  
         </div>
-      </div>       -->
-
+      </div>
+	  <br>
+	  <h1 class="center">Cheese</h1>
+      <div class="md-whiteframe-z2"  ng-cloak> 
+        <div class="center">
+          <md-card ng-repeat="record in cheeseData" class="md-card-image card" >
+          <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
+          <md-card-content>
+          <h3 class="md-body-2">Cheese Type: {{record.name}}</h3>
+          <p class="md-caption">Calories: {{record.calories}}</p>
+          </md-card-content>
+          <br>
+          </md-card>  
+        </div>
+      </div>
+	  <br>
+	  <h1 class="center">Vegetable</h1>
+      <div class="md-whiteframe-z2"  ng-cloak> 
+        <div class="center">
+          <md-card ng-repeat="record in vegetableData" class="md-card-image card" >
+          <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
+          <md-card-content>
+          <h3 class="md-body-2">Veggie: {{record.name}}</h3>
+          <p class="md-caption">Calories: {{record.calories}}</p>
+          </md-card-content>
+          <br>
+          </md-card>  
+        </div>
+      </div>
+	  <br>
+	  <h1 class="center">Sauce</h1>
+      <div class="md-whiteframe-z2"  ng-cloak> 
+        <div class="center">
+          <md-card ng-repeat="record in sauceData" class="md-card-image card" >
+          <img ng-src={{record.pictureURL}} alt="Smiley face" height="280px">
+          <md-card-content>
+          <h3 class="md-body-2">Sauce: {{record.name}}</h3>
+          <p class="md-caption">Calories: {{record.calories}}</p>
+          </md-card-content>
+          <br>
+          </md-card>  
+        </div>
+      </div>
       <!-- <md-content class="md-whiteframe-z2"  ng-cloak>
 
           <md-list-item class="md-2-line" ng-repeat="record in testData.records">
@@ -116,5 +159,6 @@
   
   <script  src="js/main.js"></script>
 
+  
 </body>
 </html>

@@ -23,17 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_ingredient_bread`
---
-
-CREATE TABLE `tbl_ingredient_bread` (
-  `id` int(11) NOT NULL,
-  `name` varchar(80) NOT NULL,
-  `calories` int(11) NOT NULL,
-  `pictureURL` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
 -- Dumping data for table `tbl_ingredient_bread`
 --
 
@@ -52,12 +41,6 @@ INSERT INTO `tbl_ingredient_bread` (`id`, `name`, `calories`, `pictureURL`) VALU
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `tbl_ingredient_bread`
---
-ALTER TABLE `tbl_ingredient_bread`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

@@ -10,16 +10,19 @@
     
     if ($email && $password){//if both email and password are not null
       echo "Querying......";
-      $sql = "select * from tbl_user where username = '$email' and password='$password'";
-      $result = mysql_query($sql);
-      $rows=mysql_num_rows($result);
+      $result = $conn->prepare('SELECT * FROM `gredients`.`tbl_user` WHERE username = :email and password = :password');
+      $result->execute(array(':email' => $email, ':password' => $password));
+      //$sql = "select * from tbl_user where username = '$email' and password='$password'";
+      //$result = mysql_query($sql);
+      $rows=$result->fetch();
       if($rows){//0 false 1 true
           $cookie_name = "usermail";
           $cookie_value = (string)$email;
           setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day                
-          header("refresh:0;url=/dev/main.html");//if success, jump tp index.html
+          header("Location: ../dev/main.html");//if success, jump tp index.html
           exit;
       }else{
+        //print_r($result->fetch());
         echo "Wrong email or password";
         echo "
             <script>
@@ -38,5 +41,5 @@
       ";
     }
 
-    mysql_close();//close connection
+    //mysql_close();//close connection
 ?>

@@ -21,9 +21,12 @@ function getCookie(name) {
 
 var usermail = getCookie("usermail");
 var userName = "XD";
+var userLogedIn = false;
+
 if (!usermail) { 
   userName = "Tourst";
 } else {
+  userLogedIn = true;
   userName = decodeURIComponent(usermail);
 }
 

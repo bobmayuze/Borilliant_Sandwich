@@ -49,14 +49,47 @@
     <!-- Top Tool Bar END -->
 
     <div class="center section container">
-      <h1>Welcome to the better Sandwich Maker!</h1>
-      <h1>{{data.userName}}</h1>
+      <div class="v-center">
+        <h1>Welcome to the better Sandwich Maker!</h1>
+        <h1>{{data.userName}}</h1>
+      </div>
+      <br>
+      <br>
+      <br>
+
+      <h1>Scroll down to  find mroe!</h1>
     </div>
 
-    <!-- {{selected | json }} -->
-    <section id="content" role="content" layout="column" layout-padding md-scroll-y>
 
-    </section>
+    <div class="center section container">
+      <div class="v-center">
+        <h1>Top 3 Popular Breads </h1>
+        <h1>{{data.userName}}</h1>
+        <h1>{{data.userName}}</h1>
+        <h1>{{data.userName}}</h1>
+      </div>
+      <br>
+      <br>
+      <br>
+      
+      <h1>Scroll down to  find mroe!</h1>
+    </div>
+
+    <h1 class="center">BREAD</h1>
+    <div class="md-whiteframe-z2 section"  ng-cloak> 
+      <div class="center">
+        <md-card ng-repeat="record in breadData" class="md-card-image card" >
+        <img ng-src ={{record.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h3 class="md-body-2">{{record.name}}</h3>
+        <p class="md-caption">{{record.calories}}</p>
+        </md-card-content>
+        <br>
+        </md-card>  
+      </div>    
+    <!-- <section id="content" role="content" layout="column" layout-padding md-scroll-y>
+
+    </section> -->
 
 
   </section>

@@ -1,7 +1,7 @@
 <?php 
   header("Content-Type: text/html; charset=utf8");
   $email=$_POST['email'];//get user email
-  $password=$_POST['password'];//get user password
+  $password=md5($_POST['password']);//get user password
 
   include('connect.php');//connect to db
 

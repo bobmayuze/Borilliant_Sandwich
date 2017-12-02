@@ -23,41 +23,47 @@ Repo for a great sandwich statistic site
         - Sign out?
         - Log in
     - Endpoint implementation 
-        - [0]Get bread list
-            - Endpoint: GET /api/ingredient/bread.php
+        - [7]Get all product list
+            - Endpoint: GET /api/allProducts.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
-        - [1]Get meat list
-            - Endpoint: GET /api/ingredient/meat.php
+        - [8]Get private product list
+            - Endpoint: GET /api/private/products.php
+            - Authorization: request user login
+            - Request Body: user mail
+            - Response: 200
+        - [9]Calculate calories 
+            - Endpoint: GET /api/getCalories.php
+            - Authorization: public
+            - Request Body: product id
+            - Response: 200
+        - [10]Get most 3 popular bread
+            - Endpoint: GET /api/getPopularBread.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
-        - [2]Get cheese list
-            - Endpoint: GET /api/ingredient/cheese.php
+        - [11]Get most 3 popular Meat
+            - Endpoint: GET /api/getPopularMeat.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
-        - [3]Get vegetables list
-            - Endpoint: GET /api/ingredient/vegetabl.php
+        - [12]Get most 3 popular Cheese
+            - Endpoint: GET /api/getPopularCheese.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
-        - [4]Get sauce list
-            - Endpoint: GET /api/ingredient/sauce.php
+        - [13]Get most 3 popular vegetables
+            - Endpoint: GET /api/getPopularvegetables.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
-        - [5]Get product list
-            - Endpoint: GET /api/products.php
+        - [14]Get most 3 popular sauce
+            - Endpoint: GET /api/getPopularsauce.php
             - Authorization: public
             - Request Body: Empty
             - Response: 200
-        - [6]Get product by user id
-            - Endpoint: GET /api/user_id.php
-            - Authorization: user
-            - Request Body: Empty
-            - Response: 200
+
 
 
 # How to use Google Drive as CDN
@@ -79,3 +85,43 @@ Repo for a great sandwich statistic site
     - tbl_ingredient_sauce (Hangen)
     - tbl_ingredient_bread (Hangen)
 
+2.User framework implementaion 
+    - Sign up
+    - Sign out?
+    - Log in
+3.Endpoint implementation 
+- [0]Get bread list
+    - Endpoint: GET /api/ingredient/bread.php
+    - Authorization: public
+    - Request Body: Empty
+    - Response: 200
+- [1]Get meat list
+    - Endpoint: GET /api/ingredient/meat.php
+    - Authorization: public
+    - Request Body: Empty
+    - Response: 200
+- [2]Get cheese list
+    - Endpoint: GET /api/ingredient/cheese.php
+    - Authorization: public
+    - Request Body: Empty
+    - Response: 200
+- [3]Get vegetables list
+    - Endpoint: GET /api/ingredient/vegetabl.php
+    - Authorization: public
+    - Request Body: Empty
+    - Response: 200
+- [4]Get sauce list
+    - Endpoint: GET /api/ingredient/sauce.php
+    - Authorization: public
+    - Request Body: Empty
+    - Response: 200
+- [5]Get product list
+    - Endpoint: GET /api/products.php
+    - Authorization: public
+    - Request Body: Empty
+    - Response: 200
+- [6]Get product by user id
+    - Endpoint: GET /api/user_id.php
+    - Authorization: user
+    - Request Body: Empty
+    - Response: 200

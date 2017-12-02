@@ -39,3 +39,7 @@ md-content {
 	width: 100vw;
 	margin-bottom: 100vh;
 }
+
+.clicked {
+	background-color:#e21212;
+}

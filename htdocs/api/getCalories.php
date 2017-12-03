@@ -19,7 +19,7 @@ if (!$result) {
 
 
 
-$outp = "";
+$outp_cal = "";
 
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if (!$rs) {
@@ -87,16 +87,13 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $total_calories=$bread_calories+$cheese_calories+$vege_calories+$sauce_calories+$meat_calories;
 
 
-    if ($outp != "") {$outp .= ",";}
-    $outp .= '{"combo":"'  . $rs["id"] . '",';
-    $outp .= '"$Total_Calories":"'   . $total_calories . '"}';
+    if ($outp_cal != "") {$outp_cal .= ",";}
+    $outp_cal .= '{"combo":"'  . $rs["id"] . '",';
+    $outp_cal .= '"Total_Calories":"'   . $total_calories . '"}';
 }
 
 
-$outp ='{"records":['.$outp.']}';
+$outp_cal ='{"records_cal":['.$outp_cal.']}';
 
 $conn->close();
-
-echo($outp);
-
 ?>

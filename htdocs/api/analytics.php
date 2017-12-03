@@ -438,6 +438,7 @@ $jsonString = $jsonString . '}';
 $jsonString = $jsonString . '}}';
 
 $jsonObject = json_encode($jsonString);
+$jsonObject = json_decode($jsonObject);
 
 echo($jsonObject);
 

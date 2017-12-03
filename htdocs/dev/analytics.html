@@ -60,10 +60,10 @@
       <h1>Scroll down to  find mroe!</h1>
     </div>
 
-<!--     <div class="combo center section container">
-      <div class="combo" ng-repeat="bread in analyticsData.bread">
+    <div class="combo center section container">
+      <div class="combo" >
 
-        <md-card class="md-card-image card" >
+        <md-card ng-repeat="bread in analyticsData.bread" class="md-card-image card" >
         <img ng-src ={{bread.pictureURL}} alt="Smiley face" height="280px">
         <md-card-content>
         <h1 class="md-caption">{{bread.name}}</h1>
@@ -71,8 +71,32 @@
         <br>
         </md-card>
 
+        <md-card ng-repeat="meat in analyticsData.meat" class="md-card-image card" >
+        <img ng-src ={{meat.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{meat.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card ng-repeat="cheese in analyticsData.cheese" class="md-card-image card" >
+        <img ng-src ={{cheese.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{cheese.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card ng-repeat="vegetable in analyticsData.vegetable" class="md-card-image card" >
+        <img ng-src ={{vegetable.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{vegetable.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
       </div>
-    </div> -->
+    </div>
 
     <div class="combo center section container">
       <div class="combo" ng-repeat="record in allProducts">

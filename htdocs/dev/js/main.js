@@ -11,6 +11,7 @@ angular.module('App').controller('AppCtrl', function(
     $mdToast,
     $http
   ){
+  
   // toast message
   $scope.toast = function(message) {
     var toast = $mdToast.simple().content('You clicked ' + message).position('bottom right');
@@ -101,7 +102,15 @@ angular.module('App').controller('AppCtrl', function(
         }]
       }]
     }
-
+  }
+  
+  $scope.solution = {
+	bread: "",
+	meat: [],
+	cheese: [],
+	veggies: [],
+	sauce: []
+	
   }
   
   // Works with allowing clicks to bread
@@ -163,6 +172,84 @@ angular.module('App').controller('AppCtrl', function(
 	}
 	
   };
+  
+  var init = function() {
+	var hiding = 
+	document.getElementById('solution').className = "center ng-hide";
+  }
+  
+  init();
+  
+  function getRandomInt(min, max) {
+	if (max < min) {
+		return 0;
+	}
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  
+  // Getting result
+  $scope.randomize = function() {
+	$scope.solution.bread = "";
+	$scope.solution.meat = [];
+	$scope.solution.cheese = [];
+	$scope.solution.veggies = [];
+	$scope.solution.sauce = [];
+	
+    var luck = getRandomInt(0, $scope.bSelect.length-1);;
+	var repeat;
+	var i;
+	// Bread, only one
+	if ($scope.bSelect.length == 0) {
+	  $scope.solution.bread = "None?";
+	} else {
+	  $scope.solution.bread = $scope.bSelect[luck];
+	}
+	// Meat
+	if ($scope.mSelect.length == 0) {
+	  $scope.solution.meat.push("None?");
+	} else {
+	  repeat = getRandomInt(1, $scope.mSelect.length);
+      for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(1, $scope.mSelect.length-1);
+	    $scope.solution.meat.push($scope.mSelect[luck]);
+	  }
+	}
+	// Cheese
+	if ($scope.cSelect.length == 0) {
+	  $scope.solution.cheese.push("None?");
+	} else {
+	  repeat = getRandomInt(1, $scope.cSelect.length);
+    for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(1, $scope.cSelect.length-1);
+	    $scope.solution.cheese.push($scope.cSelect[luck]);
+	  }
+	}
+	// Veggies
+	if ($scope.vSelect.length == 0) {
+	  $scope.solution.veggies.push("None?");
+	} else {
+	  repeat = getRandomInt(1, $scope.vSelect.length);
+      for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(0, $scope.vSelect.length-1);
+	    $scope.solution.veggies.push($scope.vSelect[luck]);
+	  }
+	}
+	// Sauce
+	if ($scope.sSelect.length == 0) {
+	  $scope.solution.sauce.push("None?");
+	} else {
+	  repeat = getRandomInt(1, $scope.sSelect.length);
+      for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(0, $scope.sSelect.length-1);
+	    $scope.solution.sauce.push($scope.sSelect[luck]);
+	  }
+	}
+	document.getElementById('solution').className = "center ng-show";	
+
+  };
+  
+  
+  
 });
 
 

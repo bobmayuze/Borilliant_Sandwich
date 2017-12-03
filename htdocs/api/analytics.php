@@ -71,7 +71,7 @@ include('../user/connect.php');
 $result = $conn->prepare("SELECT bread_id, count(*) FROM tbl_combos GROUP BY bread_id ORDER BY count(*) DESC LIMIT 3");
 $result->execute();
 
-$jsonString = '{"top3":[{';
+$jsonString = '{"top3":{';
 
 $data = $result->fetchAll();
 
@@ -378,7 +378,7 @@ $jsonString = $jsonString . '}]';
 //=========================================================================================
 
 
-$jsonString = $jsonString . '}]}';
+$jsonString = $jsonString . '}}';
 
 $jsonObject = json_encode($jsonString);
 

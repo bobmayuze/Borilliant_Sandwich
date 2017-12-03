@@ -20,6 +20,9 @@ if ($conn->connect_error) {
 
 $result = $conn->query("select * from tbl_combos order by id desc limit 3;");
 
+if (!$result) {
+    throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+}
 
 
 

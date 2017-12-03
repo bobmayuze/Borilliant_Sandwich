@@ -130,23 +130,13 @@ $data = $result->fetchAll();
 
 unset($result);
 
-$jsonString = $jsonString . '"bread":{';
+$jsonString = $jsonString . '"bread":[';
 
 for ($i = 0; $i < sizeof($data); $i++){
 
 	if ($i != 0){
 		$jsonString = $jsonString . ',';
 	}
-
-	if ($i == 0){
-		$num = "first";
-	} else if ($i == 1){
-		$num = "second";
-	} else {
-		$num = "third";
-	}
-
-	$jsonString = $jsonString . '"' . $num . '": ';
 
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_bread WHERE id = :id");
 
@@ -156,12 +146,12 @@ for ($i = 0; $i < sizeof($data); $i++){
 
 	unset($result);
 
-	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 }
 
-$jsonString = $jsonString . '},';
+$jsonString = $jsonString . '],';
 //===========================================================================================
 //meat
 $result = $conn->prepare("SELECT meat_id FROM tbl_combos");
@@ -192,7 +182,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"meat":{';
+$jsonString = $jsonString . '"meat":[';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -201,15 +191,6 @@ foreach ($values as $key => $value){
 		$jsonString = $jsonString . ',';
 	}
 
-	if ($i == 0){
-		$num = "first";
-	} else if ($i == 1){
-		$num = "second";
-	} else {
-		$num = "third";
-	}
-
-	$jsonString = $jsonString . '"' . $num . '": ';
 
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_meat WHERE id = :id");
 	$result->execute(array(':id' => $key));
@@ -218,7 +199,7 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
@@ -227,7 +208,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '},';
+$jsonString = $jsonString . '],';
 
 //=========================================================================================
 //===========================================================================================
@@ -260,7 +241,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"cheese":{';
+$jsonString = $jsonString . '"cheese":[';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -269,16 +250,6 @@ foreach ($values as $key => $value){
 		$jsonString = $jsonString . ',';
 	}
 
-	if ($i == 0){
-		$num = "first";
-	} else if ($i == 1){
-		$num = "second";
-	} else {
-		$num = "third";
-	}
-
-	$jsonString = $jsonString . '"' . $num . '": ';
-
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_cheese WHERE id = :id");
 	$result->execute(array(':id' => $key));
 
@@ -286,7 +257,7 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
@@ -295,7 +266,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '},';
+$jsonString = $jsonString . '],';
 
 //=========================================================================================
 //===========================================================================================
@@ -328,7 +299,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"vegetable":{';
+$jsonString = $jsonString . '"vegetable":[';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -337,16 +308,6 @@ foreach ($values as $key => $value){
 		$jsonString = $jsonString . ',';
 	}
 
-	if ($i == 0){
-		$num = "first";
-	} else if ($i == 1){
-		$num = "second";
-	} else {
-		$num = "third";
-	}
-
-	$jsonString = $jsonString . '"' . $num . '": ';
-
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_vegetable WHERE id = :id");
 	$result->execute(array(':id' => $key));
 
@@ -354,7 +315,7 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 
 	if ($i == 2){
 		break;
@@ -362,7 +323,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '},';
+$jsonString = $jsonString . '],';
 
 //=========================================================================================
 //===========================================================================================
@@ -395,7 +356,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"sauce":{';
+$jsonString = $jsonString . '"sauce":[';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -404,16 +365,6 @@ foreach ($values as $key => $value){
 		$jsonString = $jsonString . ',';
 	}
 
-	if ($i == 0){
-		$num = "first";
-	} else if ($i == 1){
-		$num = "second";
-	} else {
-		$num = "third";
-	}
-
-	$jsonString = $jsonString . '"' . $num . '": ';
-
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_sauce WHERE id = :id");
 	$result->execute(array(':id' => $key));
 
@@ -421,7 +372,7 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
@@ -430,7 +381,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '}';
+$jsonString = $jsonString . ']';
 
 //=========================================================================================
 

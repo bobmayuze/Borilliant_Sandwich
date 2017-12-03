@@ -135,6 +135,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $outp .= '"sauce_url":"'   . $sauce_url . '",';
     $outp .= '"sauce_qty":"'   . $sauce_qty . '"}';
 }
+
 $outp ='{"records":['.$outp.']}';
 $conn->close();
 

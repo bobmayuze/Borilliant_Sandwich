@@ -61,22 +61,59 @@
     </div>
 
 
-    <div class="center section container">
-      <div class="v-center">
-        <h1>Top 3 Popular Breads </h1>
-        <h1>{{data.userName}}</h1>
-        <h1>{{data.userName}}</h1>
-        <h1>{{data.userName}}</h1>
+    <div class="combo center section container">
+      <div class="combo" ng-repeat="record in allProducts">
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.bread_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.bread_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.meat_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.meat_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.cheese_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.cheese_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.vegetable_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.vegetable_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.sauce_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.sauce_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+
+
+
+
+
       </div>
-      <br>
-      <br>
-      <br>
-      
-      <h1>Scroll down to  find mroe!</h1>
     </div>
 
-    <h1 class="center">MOST POPULAR BREAD</h1>
-    <div class="md-whiteframe-z2 section"  ng-cloak> 
+    <!-- <h1 class="center">MOST POPULAR BREAD</h1>
+    <div ng-cloak> 
       <div class="center">
         <md-card ng-repeat="record in breadData" class="md-card-image card" >
         <img ng-src ={{record.pictureURL}} alt="Smiley face" height="280px">
@@ -86,7 +123,8 @@
         </md-card-content>
         <br>
         </md-card>  
-      </div>    
+      </div>
+    </div> -->    
     <!-- <section id="content" role="content" layout="column" layout-padding md-scroll-y>
 
     </section> -->

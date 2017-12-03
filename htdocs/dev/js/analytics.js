@@ -64,6 +64,14 @@ angular.module('App').controller('AppCtrl', function(
 			item.name = item.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 		});
 	});
+
+  $http.get("../api/allProducts.php")
+    .then(function (response) {$scope.allProducts = response.data.records;
+    // $scope.allProducts.forEach(function(item) {
+    //   item.name = item.name.replace(/_/g,' ');
+    //   item.name = item.name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    // });
+  });
   
   
   $scope.data = {

@@ -81,9 +81,22 @@ $jsonString = $jsonString . '"bread":[{';
 
 for ($i = 0; $i < sizeof($data); $i++){
 
-	$jsonString = $jsonString . '"' . ($i+1) . '": ';
+	if ($i != 0){
+		$jsonString = $jsonString . ',';
+	}
+
+	if ($i == 0){
+		$num = "first";
+	} else if ($i == 1){
+		$num = "second";
+	} else {
+		$num = "third";
+	}
+
+	$jsonString = $jsonString . '"' . $num . '": ';
 
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_bread WHERE id = :id");
+
 	$result->execute(array(':id' => $data[$i]["bread_id"]));
 
 	$innerData = $result->fetchAll();
@@ -92,9 +105,6 @@ for ($i = 0; $i < sizeof($data); $i++){
 
 	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
-	if ($i + 1 != sizeof($data)){
-		$jsonString = $jsonString . ',';
-	}
 }
 
 $jsonString = $jsonString . '}],';
@@ -133,7 +143,19 @@ $jsonString = $jsonString . '"meat":[{';
 $i = 0;
 foreach ($values as $key => $value){
 
-	$jsonString = $jsonString . '"' . ($i+1) . '": ';
+	if ($i != 0){
+		$jsonString = $jsonString . ',';
+	}
+
+	if ($i == 0){
+		$num = "first";
+	} else if ($i == 1){
+		$num = "second";
+	} else {
+		$num = "third";
+	}
+
+	$jsonString = $jsonString . '"' . $num . '": ';
 
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_meat WHERE id = :id");
 	$result->execute(array(':id' => $key));
@@ -144,9 +166,6 @@ foreach ($values as $key => $value){
 
 	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
-	if((next($values) === true) || ($i < 2)){
-        $jsonString = $jsonString . ',';
-    }
 	if ($i == 2){
 		break;
 	}
@@ -191,7 +210,19 @@ $jsonString = $jsonString . '"cheese":[{';
 $i = 0;
 foreach ($values as $key => $value){
 
-	$jsonString = $jsonString . '"' . ($i+1) . '": ';
+	if ($i != 0){
+		$jsonString = $jsonString . ',';
+	}
+
+	if ($i == 0){
+		$num = "first";
+	} else if ($i == 1){
+		$num = "second";
+	} else {
+		$num = "third";
+	}
+
+	$jsonString = $jsonString . '"' . $num . '": ';
 
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_cheese WHERE id = :id");
 	$result->execute(array(':id' => $key));
@@ -202,9 +233,6 @@ foreach ($values as $key => $value){
 
 	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
-	if((next($values) === true) || ($i < 2)){
-        $jsonString = $jsonString . ',';
-    }
 	if ($i == 2){
 		break;
 	}
@@ -249,7 +277,19 @@ $jsonString = $jsonString . '"vegetable":[{';
 $i = 0;
 foreach ($values as $key => $value){
 
-	$jsonString = $jsonString . '"' . ($i+1) . '": ';
+	if ($i != 0){
+		$jsonString = $jsonString . ',';
+	}
+
+	if ($i == 0){
+		$num = "first";
+	} else if ($i == 1){
+		$num = "second";
+	} else {
+		$num = "third";
+	}
+
+	$jsonString = $jsonString . '"' . $num . '": ';
 
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_vegetable WHERE id = :id");
 	$result->execute(array(':id' => $key));
@@ -260,9 +300,6 @@ foreach ($values as $key => $value){
 
 	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
-	if((next($values) === true) || ($i < 2)){
-        $jsonString = $jsonString . ',';
-    }
 	if ($i == 2){
 		break;
 	}
@@ -307,7 +344,19 @@ $jsonString = $jsonString . '"sauce":[{';
 $i = 0;
 foreach ($values as $key => $value){
 
-	$jsonString = $jsonString . '"' . ($i+1) . '": ';
+	if ($i != 0){
+		$jsonString = $jsonString . ',';
+	}
+
+	if ($i == 0){
+		$num = "first";
+	} else if ($i == 1){
+		$num = "second";
+	} else {
+		$num = "third";
+	}
+
+	$jsonString = $jsonString . '"' . $num . '": ';
 
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_sauce WHERE id = :id");
 	$result->execute(array(':id' => $key));
@@ -318,9 +367,6 @@ foreach ($values as $key => $value){
 
 	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
-	if((next($values) === true) || ($i < 2)){
-        $jsonString = $jsonString . ',';
-    }
 	if ($i == 2){
 		break;
 	}

@@ -32,35 +32,88 @@ function top3(){
 
 
 {
-  "top3": [{
-    "bread": [{
-      "1": ["wheat_bread", "69", "http://img.allw.mn/content/2013/11/24210219_6761.jpg"],
-      "2": ["gluten_free_wrap", "75", "http://beyondmeat-uploads.s3.amazonaws.com/recipes/buffalo-gluten-free-chicken-wrap/Buffalo-Gluten-Free-Wrap.jpg"],
-      "3": ["white_wrap", "70", "http://img.taste.com.au/xzkCGkYB/w643-h428-cfill-q90/taste/2016/11/barbecue-beef-wraps-59449-1.jpeg"]
-    }],
-    "meat": [{
-      "1": ["honey_ham", "34", "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/8/14/0/WU1104H_Honey-Glazed-Ham_s4x3.jpg.rend.hgtvcom.616.462.suffix/1439583024885.jpeg"],
-      "2": ["turkey", "22", "http://cdn-mf0.heartyhosting.com/sites/mensfitness.com/files/styles/gallery_slideshow_image/public/sliced-turkey.jpg"],
-      "3": ["roast_beef", "35", "https://images.eatthismuch.com/site_media/img/99969_ldementhon_2d356fa3-a0af-49a3-b7ce-49d5ae8f4a0b.png"]
-    }],
-    "cheese": [{
-      "1": ["provolone", "96", "http://www.murrayscheese.com/site/images/items/20019700000.0.jpg?resizeid=3&resizeh=600&resizew=600"],
-      "2": ["american", "104", "http://thumbs.ifood.tv/files/images/editor/images/American%20Cheese.jpg"],
-      "3": ["swiss", "106", "https://boygeniusreport.files.wordpress.com/2015/05/swiss_cheese.jpg?quality=98&strip=all"]
-    }],
-    "vegetable": [{
-      "1": ["tomato", "4", "http://growyourowngroceries.org/wp-content/uploads/2015/07/bigstock-Red-sliced-tomato-90434192-300x171.jpg"],
-      "2": ["brocoli", "31", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmgfbl6WvUpe1YQfPNfmWreEIomJ1_Tv_OwhaWqVz1FO8RTNFAQ"],
-      "3": ["avocado", "234", "https://www.organicfacts.net/wp-content/uploads/avocado.jpg"]
-    }],
-    "sauce": [{
-      "1": ["bbq_sauce", "25", "https://target.scene7.com/is/image/Target/16759960?wid=520&hei=520&fmt=pjpeg"],
-      "2": ["ranch_dressing", "73", "https://www.jaysbakingmecrazy.com/wp-content/uploads/2016/01/paleo_ranch2.jpg"],
-      "3": ["dijon_mustard", "5", "http://chefsbest.com/wp-content/uploads/2015/11/Maille-Dijon-Mustard-FRONT.jpg"]
-    }]
-  }]
-}  
-
+	"top3": {
+		"bread": {
+			"first": {
+				"name": "wheat_bread",
+				"calories": "69",
+				"pictureURL": "http://img.allw.mn/content/2013/11/24210219_6761.jpg"
+			},
+			"second": {
+				"name": "gluten_free_wrap",
+				"calories": "75",
+				"pictureURL": "http://beyondmeat-uploads.s3.amazonaws.com/recipes/buffalo-gluten-free-chicken-wrap/Buffalo-Gluten-Free-Wrap.jpg"
+			},
+			"third": {
+				"name": "white_wrap",
+				"calories": "70",
+				"pictureURL": "http://img.taste.com.au/xzkCGkYB/w643-h428-cfill-q90/taste/2016/11/barbecue-beef-wraps-59449-1.jpeg"
+			}
+		},
+		"meat": {
+			"first": {
+				"name": "honey_ham",
+				"calories": "34",
+				"pictureURL": "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/8/14/0/WU1104H_Honey-Glazed-Ham_s4x3.jpg.rend.hgtvcom.616.462.suffix/1439583024885.jpeg"
+			},
+			"second": {
+				"name": "turkey",
+				"calories": "22",
+				"pictureURL": "http://cdn-mf0.heartyhosting.com/sites/mensfitness.com/files/styles/gallery_slideshow_image/public/sliced-turkey.jpg"
+			},
+			"third": {
+				"name": "roast_beef",
+				"calories": "35",
+				"pictureURL": "https://images.eatthismuch.com/site_media/img/99969_ldementhon_2d356fa3-a0af-49a3-b7ce-49d5ae8f4a0b.png"
+			}
+		},
+		"cheese": {
+			"first": {
+				"name": "provolone",
+				"calories": "96",
+				"pictureURL": "http://www.murrayscheese.com/site/images/items/20019700000.0.jpg?resizeid=3&resizeh=600&resizew=600"
+			},
+			"second": {
+				"name": "american",
+				"calories": "104",
+				"pictureURL": "http://thumbs.ifood.tv/files/images/editor/images/American%20Cheese.jpg"
+			},
+			"third": {
+				"name": "swiss",
+				"calories": "106",
+				"pictureURL": "https://boygeniusreport.files.wordpress.com/2015/05/swiss_cheese.jpg?quality=98&strip=all"
+			}
+		},
+		"vegetable": {
+			"first": {
+				"name": "tomato",
+				"calories": "4",
+				"pictureURL": "http://growyourowngroceries.org/wp-content/uploads/2015/07/bigstock-Red-sliced-tomato-90434192-300x171.jpg"
+			},
+			"second": {
+				"name": "brocoli",
+				"calories": "31",
+				"pictureURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmgfbl6WvUpe1YQfPNfmWreEIomJ1_Tv_OwhaWqVz1FO8RTNFAQ"
+			},
+			"third": {
+				"name": "avocado",
+				"calories": "234",
+				"pictureURL": "https://www.organicfacts.net/wp-content/uploads/avocado.jpg"
+			}
+		},
+		"sauce": {
+			"first": {
+				"name": "bbq_sauce",
+				"calories": "25",
+				"pictureURL": "https://target.scene7.com/is/image/Target/16759960?wid=520&hei=520&fmt=pjpeg"
+			},
+			"second": {
+				"name": "blue_cheese_dressing",
+				"calories": "70",
+				"pictureURL": "https://i5.walmartimages.com/asr/def10768-4e00-4f82-80f7-3fcdf1e163ab_1.8b796cba97178720ccbfa038715ca0d5.jpeg"
+			}
+		}
+	}
 }
 */
 header("Access-Control-Allow-Origin: *");
@@ -77,7 +130,7 @@ $data = $result->fetchAll();
 
 unset($result);
 
-$jsonString = $jsonString . '"bread":[{';
+$jsonString = $jsonString . '"bread":{';
 
 for ($i = 0; $i < sizeof($data); $i++){
 
@@ -103,11 +156,12 @@ for ($i = 0; $i < sizeof($data); $i++){
 
 	unset($result);
 
-	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
+	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 }
 
-$jsonString = $jsonString . '}],';
+$jsonString = $jsonString . '},';
 //===========================================================================================
 //meat
 $result = $conn->prepare("SELECT meat_id FROM tbl_combos");
@@ -138,7 +192,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"meat":[{';
+$jsonString = $jsonString . '"meat":{';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -164,7 +218,8 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
+	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
 		break;
@@ -172,7 +227,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '}],';
+$jsonString = $jsonString . '},';
 
 //=========================================================================================
 //===========================================================================================
@@ -205,7 +260,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"cheese":[{';
+$jsonString = $jsonString . '"cheese":{';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -231,7 +286,8 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
+	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
 		break;
@@ -239,7 +295,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '}],';
+$jsonString = $jsonString . '},';
 
 //=========================================================================================
 //===========================================================================================
@@ -272,7 +328,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"vegetable":[{';
+$jsonString = $jsonString . '"vegetable":{';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -298,7 +354,7 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
+	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 
 	if ($i == 2){
 		break;
@@ -306,7 +362,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '}],';
+$jsonString = $jsonString . '},';
 
 //=========================================================================================
 //===========================================================================================
@@ -339,7 +395,7 @@ foreach ($values as &$temp) {
 
 arsort($values);
 
-$jsonString = $jsonString . '"sauce":[{';
+$jsonString = $jsonString . '"sauce":{';
 
 $i = 0;
 foreach ($values as $key => $value){
@@ -365,7 +421,8 @@ foreach ($values as $key => $value){
 
 	unset($result);
 
-	$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
+	$jsonString = $jsonString . '{'. '"name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
+	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
 		break;
@@ -373,7 +430,7 @@ foreach ($values as $key => $value){
 	$i++;
 }
 
-$jsonString = $jsonString . '}]';
+$jsonString = $jsonString . '}';
 
 //=========================================================================================
 

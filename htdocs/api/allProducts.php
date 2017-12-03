@@ -131,7 +131,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $outp .= '"vegetable_id":"'   . $vegetable_name . '",';
     $outp .= '"vegetable_qty":"'   . $vegetable_qty . '",';
     $outp .= '"vegetable_url":"'   . $vegetable_url . '",';
-    $outp .= '"sauce_id":"'   . $sauce_name . '",';
+    $outp .= '"sauce_name":"'   . $sauce_name . '",';
     $outp .= '"sauce_url":"'   . $sauce_url . '",';
     $outp .= '"sauce_qty":"'   . $sauce_qty . '"}';
 }

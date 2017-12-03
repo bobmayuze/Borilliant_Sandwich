@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Honghao
- * Date: 12/3/2017
- * Time: 5:55 AM
- */
 
-//insert.php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -33,6 +26,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $creater_id=$rs["creater_id"];
     $name = $conn->query("SELECT * FROM `tbl_user` WHERE id=$creater_id");
     while ($row = $name->fetch_assoc()) {
+        if (!$name) {
+            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+        }
         $creater_id= $row['username'];
     }
 
@@ -40,6 +36,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $bread_id=$rs["bread_id"];
     $name = $conn->query("SELECT * FROM `tbl_ingredient_bread` WHERE id=$bread_id");
     while ($row = $name->fetch_assoc()) {
+        if (!$name) {
+            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+        }
         $bread_id= $row['name'];
     }
     $bread_qty=$rs["bread_qty"];
@@ -48,6 +47,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $meat_name=$rs["meat_id"];
     $name = $conn->query("SELECT * FROM `tbl_ingredient_meat` WHERE id=$meat_name");
     while ($row = $name->fetch_assoc()) {
+        if (!$name) {
+            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+        }
         $meat_name= $row['name'];
     }
     $meat_qty=$rs["meat_qty"];
@@ -56,6 +58,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $cheese_name=$rs["cheese_id"];
     $name = $conn->query("SELECT * FROM `tbl_ingredient_cheese` WHERE id=$cheese_name");
     while ($row = $name->fetch_assoc()) {
+        if (!$name) {
+            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+        }
         $cheese_name= $row['name'];
     }
     $cheese_qty=$rs["cheese_qty"];
@@ -64,6 +69,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $vegetable_name=$rs["vegetable_id"];
     $name = $conn->query("SELECT * FROM `tbl_ingredient_vegetable` WHERE id=$vegetable_name");
     while ($row = $name->fetch_assoc()) {
+        if (!$name) {
+            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+        }
         $vegetable_name= $row['name'];
     }
     $vegetable_qty=$rs["vegetable_qty"];
@@ -72,6 +80,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $sauce_name=$rs["sauce_id"];
     $name = $conn->query("SELECT * FROM `tbl_ingredient_sauce` WHERE id=$sauce_name");
     while ($row = $name->fetch_assoc()) {
+        if (!$name) {
+            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+        }
         $sauce_name= $row['name'];
     }
     $sauce_qty=$rs["sauce_qty"];

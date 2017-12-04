@@ -5,8 +5,11 @@
 
     // print_r($_POST);
 
+
     $email = $_POST['email'];//get user email
     $password = md5($_POST['password']);//get user password
+
+
     
     if ($email && $password){//if both email and password are not null
       echo "Querying......";

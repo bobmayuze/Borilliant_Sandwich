@@ -128,11 +128,11 @@ angular.module('App').controller('AppCtrl', function(
 	if ($scope.bSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.bSelect.push(ingredient);
-	  $scope.bSelectId.push(id);
+	  $scope.bSelectId.push(parseInt(id));
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.bSelect.splice($scope.bSelect.indexOf(ingredient)-1, 1);
-	  $scope.bSelectId.splice($scope.bSelect.indexOf(id)-1, 1);
+	  $scope.bSelectId.splice($scope.bSelectId.indexOf(parseInt(id))-1, 1);
 	}
 	
   };
@@ -142,11 +142,11 @@ angular.module('App').controller('AppCtrl', function(
 	if ($scope.vSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.vSelect.push(ingredient);
-	  $scope.vSelectId.push(id);
+	  $scope.vSelectId.push(parseInt(id));
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.vSelect.splice($scope.vSelect.indexOf(ingredient), 1);
-	  $scope.vSelectId.splice($scope.vSelect.indexOf(id)-1, 1);
+	  $scope.vSelectId.splice($scope.vSelectId.indexOf(parseInt(id))-1, 1);
 	}
 	
   };
@@ -156,10 +156,11 @@ angular.module('App').controller('AppCtrl', function(
 	if ($scope.mSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.mSelect.push(ingredient);
-	  $scope.mSelectId.push(id);
+	  $scope.mSelectId.push(parseInt(id));
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.mSelect.splice($scope.mSelect.indexOf(ingredient), 1);
+	  $scope.vSelectId.splice($scope.mSelectId.indexOf(parseInt(id))-1, 1);
 	}
 	
   };
@@ -169,11 +170,11 @@ angular.module('App').controller('AppCtrl', function(
 	if ($scope.cSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.cSelect.push(ingredient);
-	  $scope.cSelectId.push(id);
+	  $scope.cSelectId.push(parseInt(id));
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.cSelect.splice($scope.cSelect.indexOf(ingredient), 1);
-	  $scope.cSelectId.splice($scope.cSelect.indexOf(id)-1, 1);
+	  $scope.cSelectId.splice($scope.cSelectId.indexOf(parseInt(id))-1, 1);
 	}
 	
   };
@@ -183,11 +184,11 @@ angular.module('App').controller('AppCtrl', function(
 	if ($scope.sSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.sSelect.push(ingredient);
-	  $scope.sSelectId.push(id);
+	  $scope.sSelectId.push(parseInt(id));
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.sSelect.splice($scope.sSelect.indexOf(ingredient), 1);
-	  $scope.sSelectId.splice($scope.sSelect.indexOf(id)-1, 1);
+	  $scope.sSelectId.splice($scope.sSelectId.indexOf(parseInt(id))-1, 1);
 	}
 	
   };

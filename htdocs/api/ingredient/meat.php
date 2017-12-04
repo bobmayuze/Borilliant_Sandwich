@@ -19,7 +19,8 @@ $result = $conn->query("SELECT * FROM tbl_ingredient_meat");
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
-    $outp .= '{"name":"'  . $rs["name"] . '",';
+    $outp .= '{"id":"'  . $rs["id"] . '",';
+    $outp .= '"name":"'  . $rs["name"] . '",';
     $outp .= '"calories":"'   . $rs["calories"] . '",';
     $outp .= '"pictureURL":"'   . $rs["pictureURL"] . '"}';
 }

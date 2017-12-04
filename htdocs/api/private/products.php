@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: text/html; charset=utf8");
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,6 +14,10 @@ $usermail;
 //check if the user loged in
 if (isset($_COOKIE['usermail'])) {
     $usermail = $_COOKIE['usermail'];
+}else{
+    echo "user not log in</br>";
+    header("Location: ../dev/main.html");//if success, jump tp index.html
+    exit;
 }
 //get user mail
 $creater_id;

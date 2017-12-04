@@ -28,6 +28,7 @@ md-content {
   color:white;
   font-family:'Helvetica';
   cursor:pointer;
+  outline: none;
 }
 
 .center {

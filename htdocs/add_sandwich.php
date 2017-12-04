@@ -9,8 +9,18 @@
 	}
 	$data = json_decode(file_get_contents("php://input"));
     $comboObj = $data->comboJSON;//get user email
-    $username = md5($data->username);//get user password
-    
+    $username = $data->username;//username
+	print_r("Name?" . $username);
+	if ($username == "") {
+		$username = 'admin';
+	}
+	$query = "Select id from `tbl_user` where username = " . $username;
+	$userid;
+	$row = $conn->query($query);
+	$userid = $row['id'];
+    if ($userid == null) {
+		$userid = 9999;
+	}
     if ($comboObj && $username){//if both email and password are not null
       echo "Adding sandwich...";
       //$comboObj = json_decode($comboJSON);
@@ -24,8 +34,8 @@
       $vegetable_qty = json_encode($comboObj->{'vegetable_qty'});
       $sauce_id = json_encode($comboObj->{'sauce_id'});
       $sauce_qty = json_encode($comboObj->{'sauce_qty'});
-	  $sql = $conn->prepare("INSERT INTO `tbl_combos` (bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES (:bread_id, :bread_qty, :meat_id, :meat_qty, :cheese_id, :cheese_qty, :vegetable_id, :vegetable_qty, :sauce_id, :sauce_qty)");
-      //$sql->bindParam(':username', $username);
+	  $sql = $conn->prepare("INSERT INTO `tbl_combos` (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES (:create, :bread_id, :bread_qty, :meat_id, :meat_qty, :cheese_id, :cheese_qty, :vegetable_id, :vegetable_qty, :sauce_id, :sauce_qty)");
+      $sql->bindParam(':create', $userid);
 	  $sql->bindParam(':bread_id', $bread_id);
 	  $sql->bindParam(':bread_qty', $bread_qty);
 	  $sql->bindParam(':meat_id', $meat_id);

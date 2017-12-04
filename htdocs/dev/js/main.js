@@ -23,6 +23,11 @@ angular.module('App').controller('AppCtrl', function(
   $scope.mSelect = [];
   $scope.cSelect = [];
   $scope.sSelect = [];
+  $scope.vSelectId = [];
+  $scope.bSelectId = [];
+  $scope.mSelectId = [];
+  $scope.cSelectId = [];
+  $scope.sSelectId = [];
   
   $scope.toggle = function(record, list) {
 
@@ -78,7 +83,7 @@ angular.module('App').controller('AppCtrl', function(
       buttons: [{
         name: 'Insight',
         icon: 'trending_up',
-        link: 'Button 1'
+        link: 'analytics.html'
       }],
       menus: [{
         name: 'Menu',
@@ -105,43 +110,53 @@ angular.module('App').controller('AppCtrl', function(
   }
   
   $scope.solution = {
-	bread: "",
-	meat: [],
-	cheese: [],
-	veggies: [],
-	sauce: []
+	bread_qty: "",
+	meat_qty: [],
+	cheese_qty: [],
+	vegetable_qty: [],
+	sauce_qty: [],
+	bread_id: 0,
+	meat_id: [],
+	cheese_id: [],
+	vegetable_id: [],
+	sauce_id: []
 	
   }
   
   // Works with allowing clicks to bread
-  $scope.breadClicked = function($event, ingredient) {
+  $scope.breadClicked = function($event, ingredient, id) {
 	if ($scope.bSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.bSelect.push(ingredient);
+	  $scope.bSelectId.push(id);
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.bSelect.splice($scope.bSelect.indexOf(ingredient)-1, 1);
+	  $scope.bSelectId.splice($scope.bSelect.indexOf(id)-1, 1);
 	}
 	
   };
   
   // Works with allowing clicks veggies
-  $scope.veggieClicked = function($event, ingredient) {
+  $scope.veggieClicked = function($event, ingredient, id) {
 	if ($scope.vSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.vSelect.push(ingredient);
+	  $scope.vSelectId.push(id);
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.vSelect.splice($scope.vSelect.indexOf(ingredient), 1);
+	  $scope.vSelectId.splice($scope.vSelect.indexOf(id)-1, 1);
 	}
 	
   };
   
   // Works with allowing clicks meat
-  $scope.meatClicked = function($event, ingredient) {
+  $scope.meatClicked = function($event, ingredient, id) {
 	if ($scope.mSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.mSelect.push(ingredient);
+	  $scope.mSelectId.push(id);
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.mSelect.splice($scope.mSelect.indexOf(ingredient), 1);
@@ -150,31 +165,34 @@ angular.module('App').controller('AppCtrl', function(
   };
   
   // Works with allowing clicks cheese
-  $scope.cheeseClicked = function($event, ingredient) {
+  $scope.cheeseClicked = function($event, ingredient, id) {
 	if ($scope.cSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.cSelect.push(ingredient);
+	  $scope.cSelectId.push(id);
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.cSelect.splice($scope.cSelect.indexOf(ingredient), 1);
+	  $scope.cSelectId.splice($scope.cSelect.indexOf(id)-1, 1);
 	}
 	
   };
   
   // Works with allowing clicks to sauce
-  $scope.sauceClicked = function($event, ingredient) {
+  $scope.sauceClicked = function($event, ingredient, id) {
 	if ($scope.sSelect.indexOf(ingredient) == -1) {
 	  $event.currentTarget.className = "md-card-image card clicked";
 	  $scope.sSelect.push(ingredient);
+	  $scope.sSelectId.push(id);
 	} else {
 	  $event.currentTarget.className = "md-card-image card";
 	  $scope.sSelect.splice($scope.sSelect.indexOf(ingredient), 1);
+	  $scope.sSelectId.splice($scope.sSelect.indexOf(id)-1, 1);
 	}
 	
   };
   
   var init = function() {
-	var hiding = 
 	document.getElementById('solution').className = "center ng-hide";
   }
   
@@ -187,63 +205,114 @@ angular.module('App').controller('AppCtrl', function(
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
+  function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+	alert(decodeURI(dc.substring(begin + prefix.length, end)));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+}
+  
   // Getting result
   $scope.randomize = function() {
-	$scope.solution.bread = "";
-	$scope.solution.meat = [];
-	$scope.solution.cheese = [];
-	$scope.solution.veggies = [];
-	$scope.solution.sauce = [];
+	$scope.solution.bread_qty = "";
+	$scope.solution.meat_qty = [];
+	$scope.solution.cheese_qty = [];
+	$scope.solution.vegetable_qty = [];
+	$scope.solution.sauce_qty = [];
+	$scope.solution.bread_id = 0;
+	$scope.solution.meat_id = [];
+	$scope.solution.cheese_id = [];
+	$scope.solution.vegetable_id = [];
+	$scope.solution.sauce_id = [];
 	
     var luck = getRandomInt(0, $scope.bSelect.length-1);;
 	var repeat;
 	var i;
 	// Bread, only one
 	if ($scope.bSelect.length == 0) {
-	  $scope.solution.bread = "None?";
+	  //$scope.solution.bread_qty = "None?";
+	  //$scope.solution.bread_id = 0;
 	} else {
-	  $scope.solution.bread = $scope.bSelect[luck];
+	  $scope.solution.bread_qty = $scope.bSelect[luck];
+	  $scope.solution.bread_id = $scope.bSelectId[luck];
 	}
 	// Meat
 	if ($scope.mSelect.length == 0) {
-	  $scope.solution.meat.push("None?");
+	  //$scope.solution.meat_qty.push("None?");
+	  //$scope.solution.meat_id.push(0);
 	} else {
 	  repeat = getRandomInt(1, $scope.mSelect.length);
       for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(1, $scope.mSelect.length-1);
-	    $scope.solution.meat.push($scope.mSelect[luck]);
+	    $scope.solution.meat_qty.push($scope.mSelect[luck]);
+	    $scope.solution.meat_id.push($scope.mSelectId[luck]);
 	  }
 	}
 	// Cheese
 	if ($scope.cSelect.length == 0) {
-	  $scope.solution.cheese.push("None?");
+	  //$scope.solution.cheese_qty.push("None?");
+	  //$scope.solution.cheese_id.push(0);
 	} else {
 	  repeat = getRandomInt(1, $scope.cSelect.length);
     for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(1, $scope.cSelect.length-1);
-	    $scope.solution.cheese.push($scope.cSelect[luck]);
+	    $scope.solution.cheese_qty.push($scope.cSelect[luck]);
+	    $scope.solution.cheese_id.push($scope.cSelectId[luck]);
 	  }
 	}
 	// Veggies
 	if ($scope.vSelect.length == 0) {
-	  $scope.solution.veggies.push("None?");
+	  //$scope.solution.vegetable_qty.push("None?");
+	  //$scope.solution.vegetable_id.push(0);
 	} else {
 	  repeat = getRandomInt(1, $scope.vSelect.length);
       for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(0, $scope.vSelect.length-1);
-	    $scope.solution.veggies.push($scope.vSelect[luck]);
+	    $scope.solution.vegetable_qty.push($scope.vSelect[luck]);
+	    $scope.solution.vegetable_id.push($scope.vSelectId[luck]);
 	  }
 	}
 	// Sauce
 	if ($scope.sSelect.length == 0) {
-	  $scope.solution.sauce.push("None?");
+	  //$scope.solution.sauce_qty.push("None?");
+	  //$scope.solution.sauce_id.push(0);
 	} else {
 	  repeat = getRandomInt(1, $scope.sSelect.length);
       for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(0, $scope.sSelect.length-1);
-	    $scope.solution.sauce.push($scope.sSelect[luck]);
+	    $scope.solution.sauce_qty.push($scope.sSelect[luck]);
+	    $scope.solution.sauce_id.push($scope.sSelectId[luck]);
 	  }
 	}
+	
+	
+	var info = [$scope.solution, getCookie("usermail")];
+	var data = {
+		'info':info
+	};
+	$http.post('../add_sandwich.php', {'comboJSON':$scope.solution, 'username':getCookie("usermail")})
+      .success(function(data, status, headers, config) {
+        console.log(status + ' - ' + data);
+      }).error(function(data, status, headers, config) {
+        console.log('error');
+      });
+	  
+	
 	document.getElementById('solution').className = "center ng-show";	
 
   };

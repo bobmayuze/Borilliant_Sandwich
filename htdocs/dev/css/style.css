@@ -28,6 +28,7 @@ md-content {
   color:white;
   font-family:'Helvetica';
   cursor:pointer;
+  outline: none;
 }
 
 .center {
@@ -36,6 +37,7 @@ md-content {
 
 .section {
 	height: 100vh;
+<<<<<<< HEAD
 	width: 100vw;
 	margin-bottom: 100vh;
 }
@@ -43,3 +45,19 @@ md-content {
 .clicked {
 	background-color:#e21212;
 }
+=======
+	/*width: 100vw;*/
+	/*margin-bottom: 100vh;*/
+}
+
+.v-center {  
+    padding-top: 15%;
+    padding-bottom: 10%;
+}
+
+.combo {  
+    padding-top: 15%;
+    padding-bottom: 5%;
+}
+
+>>>>>>> origin/master

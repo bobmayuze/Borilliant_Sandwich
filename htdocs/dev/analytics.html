@@ -49,14 +49,123 @@
     <!-- Top Tool Bar END -->
 
     <div class="center section container">
-      <h1>Welcome to the better Sandwich Maker!</h1>
-      <h1>{{data.userName}}</h1>
+      <div class="v-center">
+        <h1>Welcome to the better Sandwich Maker!</h1>
+        <h1>{{data.userName}}</h1>
+      </div>
+      <br>
+      <br>
+      <br>
+
+      <h1>Scroll down to  find mroe!</h1>
     </div>
 
-    <!-- {{selected | json }} -->
-    <section id="content" role="content" layout="column" layout-padding md-scroll-y>
+    <!-- popular ingredients -->
+    <div class=" combo center section container">
+        <h1>Most Popular Bread</h1>
+        <md-card ng-repeat="bread in analyticsData.bread" class="md-card-image card" >
+        <img ng-src ={{bread.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{bread.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+    </div>
 
-    </section>
+    <div class="center section container">
+        <h1>Most Popular Meat</h1>
+        <md-card ng-repeat="meat in analyticsData.meat" class="md-card-image card" >
+        <img ng-src ={{meat.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{meat.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+    </div>   
+
+    <div class="center section container">
+        <h1>Most Popular Cheese</h1>
+        <md-card ng-repeat="cheese in analyticsData.cheese" class="md-card-image card" >
+        <img ng-src ={{cheese.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{cheese.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+    </div>
+
+    <div class="center section container">
+        <h1>Most Popular Vegetable</h1>
+        <md-card ng-repeat="vegetable in analyticsData.vegetable" class="md-card-image card" >
+        <img ng-src ={{vegetable.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{vegetable.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+    </div>
+
+    <div class="center section container">
+        <h1>Most Popular Sauce</h1>
+        <md-card ng-repeat="sauce in analyticsData.sauce" class="md-card-image card" >
+        <img ng-src ={{sauce.pictureURL}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{sauce.name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+    </div>
+
+
+
+    <!-- Combo records -->
+    <div class="combo center section container">
+      <h1>Popular Combos</h1>
+      <div class="combo" ng-repeat="record in allProducts">
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.bread_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.bread_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.meat_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.meat_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.cheese_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.cheese_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.vegetable_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.vegetable_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+        <md-card class="md-card-image card" >
+        <img ng-src ={{record.sauce_url}} alt="Smiley face" height="280px">
+        <md-card-content>
+        <h1 class="md-caption">{{record.sauce_name}}</h1>
+        </md-card-content>
+        <br>
+        </md-card>
+
+      </div>
+    </div>
+
 
 
   </section>

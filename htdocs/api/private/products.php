@@ -14,6 +14,7 @@ $usermail;
 //check if the user loged in
 if (isset($_COOKIE['usermail'])) {
     $usermail = $_COOKIE['usermail'];
+
 }else{
     echo "user not log in</br>";
     header("Location: ../dev/main.html");//if success, jump tp index.html

@@ -37,6 +37,17 @@ md-content {
 
 .section {
 	height: 100vh;
-	width: 100vw;
-	margin-bottom: 100vh;
+	/*width: 100vw;*/
+	/*margin-bottom: 100vh;*/
 }
+
+.v-center {  
+    padding-top: 15%;
+    padding-bottom: 10%;
+}
+
+.combo {  
+    padding-top: 15%;
+    padding-bottom: 5%;
+}
+

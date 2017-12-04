@@ -17,7 +17,11 @@ if (isset($_COOKIE['usermail'])) {
 
 }else{
     echo "user not log in</br>";
-    header("Location: ../dev/main.html");//if success, jump tp index.html
+    echo "
+            <script>
+              setTimeout(function(){window.location.href='../../user/logIn.html';},1000);
+            </script>
+        ";
     exit;
 }
 //get user mail

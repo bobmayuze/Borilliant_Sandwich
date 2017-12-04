@@ -300,7 +300,7 @@ angular.module('App').controller('AppCtrl', function(
 	    $scope.solution.sauce_id.push($scope.sSelectId[luck]);
 	  }
 	}
-	
+	$scope.solution.cheese_qty = JSON.parse(JSON.stringify($scope.solution.cheese_qty))
 	
 	var info = [$scope.solution, getCookie("usermail")];
 	var data = {

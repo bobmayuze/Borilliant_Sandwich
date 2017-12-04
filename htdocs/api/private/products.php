@@ -46,13 +46,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
     }
 
-    $name = $conn->query("SELECT * FROM `tbl_user` WHERE id=$creater_id");
-    while ($row = $name->fetch_assoc()) {
-        if (!$name) {
-            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
-        }
-        $creater_id= $row['username'];
-    }
+
 
 
     $bread_id=$rs["bread_id"];

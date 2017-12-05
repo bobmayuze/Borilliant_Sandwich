@@ -11,13 +11,24 @@ angular.module('App').controller('AppCtrl', function(
     $mdToast,
     $http
   ){
+  
   // toast message
   $scope.toast = function(message) {
     var toast = $mdToast.simple().content('You clicked ' + message).position('bottom right');
     $mdToast.show(toast);
   };
   // selected elements
-  $scope.selected = [];
+  $scope.vSelect = [];
+  $scope.bSelect = [];
+  $scope.mSelect = [];
+  $scope.cSelect = [];
+  $scope.sSelect = [];
+  $scope.vSelectId = [];
+  $scope.bSelectId = [];
+  $scope.mSelectId = [];
+  $scope.cSelectId = [];
+  $scope.sSelectId = [];
+  
   $scope.toggle = function(record, list) {
 
     var idx = list.indexOf(record);
@@ -72,7 +83,7 @@ angular.module('App').controller('AppCtrl', function(
       buttons: [{
         name: 'Insight',
         icon: 'trending_up',
-        link: 'Button 1'
+        link: 'analytics.html'
       }],
       menus: [{
         name: 'Menu',
@@ -96,64 +107,270 @@ angular.module('App').controller('AppCtrl', function(
         }]
       }]
     }
-
   }
-
-  $scope.testData = {
-    "ingredient_type" : "bread",
-    "records": [
-      {
-        "name": "wheat_bread",
-        "calories": "69",
-        "pictureURL": "http://img.allw.mn/content/2013/11/24210219_6761.jpg"
-      },
-      {
-        "name": "white_bread",
-        "calories": "79",
-        "pictureURL": "http://urbanwired.com/health/wp-content/uploads/sites/2/2017/01/e30eb4f2d73f1a3cc3614ba54f17b5e6.jpg"
-      },
-      {
-        "name": "potato_bread",
-        "calories": "85",
-        "pictureURL": "https://cdn2.tmbi.com/TOH/Images/Photos/37/300x300/exps15220_RDS1338202D53A.jpg"
-      },
-      {
-        "name": "rye_bread",
-        "calories": "65",
-        "pictureURL": "https://assets.marthastewart.com/styles/wmax-1500/d18/rye-bread-mblb2009/rye-bread-mblb2009_horiz.jpg?itok=gR0VGBrQ"
-      },
-      {
-        "name": "gluten_free_bread",
-        "calories": "70",
-        "pictureURL": "https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/19/23/497687954.jpg"
-      },
-      {
-        "name": "white_wrap",
-        "calories": "70",
-        "pictureURL": "http://img.taste.com.au/xzkCGkYB/w643-h428-cfill-q90/taste/2016/11/barbecue-beef-wraps-59449-1.jpeg"
-      },
-      {
-        "name": "wheat_wrap",
-        "calories": "100",
-        "pictureURL": "http://images.media-allrecipes.com/userphotos/960x960/3758666.jpg"
-      },
-      {
-        "name": "spinach_wrap",
-        "calories": "130",
-        "pictureURL": "http://images.appehtite.ca/images/5287_ml%20canned%20flakes%20ham%20cheese%20spinach%20wrap.jpg"
-      },
-      {
-        "name": "tomato_wrap",
-        "calories": "160",
-        "pictureURL": "http://www.missionmenus.com/images/recipes/57/misn_wrap_sundriedtomatobasilpestochickenwrap__medium.jpg"
-      },
-      {
-        "name": "gluten_free_wrap",
-        "calories": "75",
-        "pictureURL": "http://beyondmeat-uploads.s3.amazonaws.com/recipes/buffalo-gluten-free-chicken-wrap/Buffalo-Gluten-Free-Wrap.jpg"
-      }
-    ]
+  
+  $scope.solution = {
+	bread_qty: "",
+	meat_qty: [],
+	cheese_qty: [],
+	vegetable_qty: [],
+	sauce_qty: [],
+	bread_id: 0,
+	meat_id: [],
+	cheese_id: [],
+	vegetable_id: [],
+	sauce_id: []
+	
   }
+  
+  $scope.printsol = {
+	bread_qty: "",
+	meat_qty: [],
+	cheese_qty: [],
+	vegetable_qty: [],
+	sauce_qty: []
+	
+  }
+  
+  // Works with allowing clicks to bread
+  $scope.breadClicked = function($event, ingredient, id) {
+	if ($scope.bSelect.indexOf(ingredient) == -1) {
+	  $event.currentTarget.className = "md-card-image card clicked";
+	  $scope.bSelect.push(ingredient);
+	  $scope.bSelectId.push(parseInt(id));
+	} else {
+	  $event.currentTarget.className = "md-card-image card";
+	  $scope.bSelect.splice($scope.bSelect.indexOf(ingredient)-1, 1);
+	  $scope.bSelectId.splice($scope.bSelectId.indexOf(parseInt(id))-1, 1);
+	}
+	
+  };
+  
+  // Works with allowing clicks veggies
+  $scope.veggieClicked = function($event, ingredient, id) {
+	if ($scope.vSelect.indexOf(ingredient) == -1) {
+	  $event.currentTarget.className = "md-card-image card clicked";
+	  $scope.vSelect.push(ingredient);
+	  $scope.vSelectId.push(parseInt(id));
+	} else {
+	  $event.currentTarget.className = "md-card-image card";
+	  $scope.vSelect.splice($scope.vSelect.indexOf(ingredient), 1);
+	  $scope.vSelectId.splice($scope.vSelectId.indexOf(parseInt(id))-1, 1);
+	}
+	
+  };
+  
+  // Works with allowing clicks meat
+  $scope.meatClicked = function($event, ingredient, id) {
+	if ($scope.mSelect.indexOf(ingredient) == -1) {
+	  $event.currentTarget.className = "md-card-image card clicked";
+	  $scope.mSelect.push(ingredient);
+	  $scope.mSelectId.push(parseInt(id));
+	} else {
+	  $event.currentTarget.className = "md-card-image card";
+	  $scope.mSelect.splice($scope.mSelect.indexOf(ingredient), 1);
+	  $scope.vSelectId.splice($scope.mSelectId.indexOf(parseInt(id))-1, 1);
+	}
+	
+  };
+  
+  // Works with allowing clicks cheese
+  $scope.cheeseClicked = function($event, ingredient, id) {
+	if ($scope.cSelect.indexOf(ingredient) == -1) {
+	  $event.currentTarget.className = "md-card-image card clicked";
+	  $scope.cSelect.push(ingredient);
+	  $scope.cSelectId.push(parseInt(id));
+	} else {
+	  $event.currentTarget.className = "md-card-image card";
+	  $scope.cSelect.splice($scope.cSelect.indexOf(ingredient), 1);
+	  $scope.cSelectId.splice($scope.cSelectId.indexOf(parseInt(id))-1, 1);
+	}
+	
+  };
+  
+  // Works with allowing clicks to sauce
+  $scope.sauceClicked = function($event, ingredient, id) {
+	if ($scope.sSelect.indexOf(ingredient) == -1) {
+	  $event.currentTarget.className = "md-card-image card clicked";
+	  $scope.sSelect.push(ingredient);
+	  $scope.sSelectId.push(parseInt(id));
+	} else {
+	  $event.currentTarget.className = "md-card-image card";
+	  $scope.sSelect.splice($scope.sSelect.indexOf(ingredient), 1);
+	  $scope.sSelectId.splice($scope.sSelectId.indexOf(parseInt(id))-1, 1);
+	}
+	
+  };
+  
+  var init = function() {
+	document.getElementById('solution').className = "center ng-hide";
+  }
+  
+  init();
+  
+  function getRandomInt(min, max) {
+	if (max < min) {
+		return 0;
+	}
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  
+  function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+	alert(decodeURI(dc.substring(begin + prefix.length, end)));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+}
+  
+  
+  // takes in an id. Makes the qty go up or adds it to the id array
+  
+  // Getting result
+  $scope.randomize = function() {
+	$scope.solution.bread_qty = "";
+	$scope.solution.meat_qty = [];
+	$scope.solution.cheese_qty = [];
+	$scope.solution.vegetable_qty = [];
+	$scope.solution.sauce_qty = [];
+	$scope.solution.bread_id = 0;
+	$scope.solution.meat_id = [];
+	$scope.solution.cheese_id = [];
+	$scope.solution.vegetable_id = [];
+	$scope.solution.sauce_id = [];
+	$scope.printsol.bread_qty = "";
+	$scope.printsol.meat_qty = [];
+	$scope.printsol.cheese_qty = [];
+	$scope.printsol.vegetable_qty = [];
+	$scope.printsol.sauce_qty = [];
+	
+    var luck = getRandomInt(0, $scope.bSelect.length-1);;
+	var repeat;
+	var i;
+	var currid;
+	// Bread, only one
+	if ($scope.bSelect.length == 0) {
+	  //$scope.solution.bread_qty = "None?";
+	  //$scope.solution.bread_id = 0;
+	} else {
+	  $scope.solution.bread_qty = $scope.bSelect[luck];
+	  $scope.solution.bread_id = $scope.bSelectId[luck];
+	}
+	// Meat
+	if ($scope.mSelect.length == 0) {
+	  //$scope.solution.meat_qty.push("None?");
+	  //$scope.solution.meat_id.push(0);
+	} else {
+	  repeat = getRandomInt(1, $scope.mSelect.length);
+      for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(1, $scope.mSelect.length-1);
+	    $scope.printsol.meat_qty.push($scope.mSelect[luck]);
+		currid = parseInt($scope.mSelectId[luck]);
+	    if ($scope.solution.meat_id.indexOf(currid) == -1) {
+	      $scope.solution.meat_id.push(currid);
+	      $scope.solution.meat_qty.push(1);
+	    } else {
+	      $scope.solution.meat_qty[$scope.solution.meat_id.indexOf(currid)] += 1; 
+	    }
+	  }
+	}
+	// Cheese
+	if ($scope.cSelect.length == 0) {
+	  //$scope.solution.cheese_qty.push("None?");
+	  //$scope.solution.cheese_id.push(0);
+	} else {
+	  repeat = getRandomInt(1, $scope.cSelect.length);
+    for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(1, $scope.cSelect.length-1);
+	    $scope.printsol.cheese_qty.push($scope.cSelect[luck]);
+		currid = parseInt($scope.cSelectId[luck]);
+	    if ($scope.solution.cheese_id.indexOf(currid) == -1) {
+	      $scope.solution.cheese_id.push(currid);
+	      $scope.solution.cheese_qty.push(1);
+	    } else {
+	      $scope.solution.cheese_qty[$scope.solution.cheese_id.indexOf(currid)] += 1; 
+	    }
+	  }
+	}
+	// Veggies
+	if ($scope.vSelect.length == 0) {
+	  //$scope.solution.vegetable_qty.push("None?");
+	  //$scope.solution.vegetable_id.push(0);
+	} else {
+	  repeat = getRandomInt(1, $scope.vSelect.length);
+      for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(0, $scope.vSelect.length-1);
+	    $scope.printsol.vegetable_qty.push($scope.vSelect[luck]);
+		currid = parseInt($scope.vSelectId[luck]);
+	    if ($scope.solution.vegetable_id.indexOf(currid) == -1) {
+	      $scope.solution.vegetable_id.push(currid);
+	      $scope.solution.vegetable_qty.push(1);
+	    } else {
+	      $scope.solution.vegetable_qty[$scope.solution.vegetable_id.indexOf(currid)] += 1; 
+	    }
+	  }
+	}
+	// Sauce
+	if ($scope.sSelect.length == 0) {
+	  //$scope.solution.sauce_qty.push("None?");
+	  //$scope.solution.sauce_id.push(0);
+	} else {
+	  repeat = getRandomInt(1, $scope.sSelect.length);
+      for (i = 0; i < repeat; ++i) {
+		luck = getRandomInt(0, $scope.sSelect.length-1);
+	    $scope.printsol.sauce_qty.push($scope.sSelect[luck]);
+		currid = parseInt($scope.sSelectId[luck]);
+	    if ($scope.solution.sauce_id.indexOf(currid) == -1) {
+	      $scope.solution.sauce_id.push(currid);
+	      $scope.solution.sauce_qty.push(1);
+	    } else {
+	      $scope.solution.sauce_qty[$scope.solution.sauce_id.indexOf(currid)] += 1; 
+	    }
+	  }
+	}
+	
+	// Stringify in here to make it easier
+	$scope.solution.meat_qty = $scope.solution.meat_qty.toString();
+	$scope.solution.cheese_qty = $scope.solution.cheese_qty.toString();
+	$scope.solution.vegetable_qty = $scope.solution.vegetable_qty.toString();
+	$scope.solution.sauce_qty = $scope.solution.sauce_qty.toString();
+	$scope.solution.meat_id = $scope.solution.meat_id.toString();
+	$scope.solution.cheese_id = $scope.solution.cheese_id.toString();
+	$scope.solution.vegetable_id = $scope.solution.vegetable_id.toString();
+	$scope.solution.sauce_id = $scope.solution.sauce_id.toString();
+	
+	var info = [$scope.solution, getCookie("usermail")];
+	var data = {
+		'info':info
+	};
+	$http.post('../add_sandwich.php', {'comboJSON':$scope.solution, 'username':getCookie("usermail")})
+      .success(function(data, status, headers, config) {
+        console.log(status + ' - ' + data);
+      }).error(function(data, status, headers, config) {
+        console.log('error');
+      });
+	  
+	
+	document.getElementById('solution').className = "center ng-show";	
+
+  };
+  
+  
+  
 });
 
 

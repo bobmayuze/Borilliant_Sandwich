@@ -123,6 +123,15 @@ angular.module('App').controller('AppCtrl', function(
 	
   }
   
+  $scope.printsol = {
+	bread_qty: "",
+	meat_qty: [],
+	cheese_qty: [],
+	vegetable_qty: [],
+	sauce_qty: []
+	
+  }
+  
   // Works with allowing clicks to bread
   $scope.breadClicked = function($event, ingredient, id) {
 	if ($scope.bSelect.indexOf(ingredient) == -1) {
@@ -228,6 +237,9 @@ angular.module('App').controller('AppCtrl', function(
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
   
+  
+  // takes in an id. Makes the qty go up or adds it to the id array
+  
   // Getting result
   $scope.randomize = function() {
 	$scope.solution.bread_qty = "";
@@ -240,10 +252,16 @@ angular.module('App').controller('AppCtrl', function(
 	$scope.solution.cheese_id = [];
 	$scope.solution.vegetable_id = [];
 	$scope.solution.sauce_id = [];
+	$scope.printsol.bread_qty = "";
+	$scope.printsol.meat_qty = [];
+	$scope.printsol.cheese_qty = [];
+	$scope.printsol.vegetable_qty = [];
+	$scope.printsol.sauce_qty = [];
 	
     var luck = getRandomInt(0, $scope.bSelect.length-1);;
 	var repeat;
 	var i;
+	var currid;
 	// Bread, only one
 	if ($scope.bSelect.length == 0) {
 	  //$scope.solution.bread_qty = "None?";
@@ -260,8 +278,14 @@ angular.module('App').controller('AppCtrl', function(
 	  repeat = getRandomInt(1, $scope.mSelect.length);
       for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(1, $scope.mSelect.length-1);
-	    $scope.solution.meat_qty.push($scope.mSelect[luck]);
-	    $scope.solution.meat_id.push($scope.mSelectId[luck]);
+	    $scope.printsol.meat_qty.push($scope.mSelect[luck]);
+		currid = parseInt($scope.mSelectId[luck]);
+	    if ($scope.solution.meat_id.indexOf(currid) == -1) {
+	      $scope.solution.meat_id.push(currid);
+	      $scope.solution.meat_qty.push(1);
+	    } else {
+	      $scope.solution.meat_qty[$scope.solution.meat_id.indexOf(currid)] += 1; 
+	    }
 	  }
 	}
 	// Cheese
@@ -272,8 +296,14 @@ angular.module('App').controller('AppCtrl', function(
 	  repeat = getRandomInt(1, $scope.cSelect.length);
     for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(1, $scope.cSelect.length-1);
-	    $scope.solution.cheese_qty.push($scope.cSelect[luck]);
-	    $scope.solution.cheese_id.push($scope.cSelectId[luck]);
+	    $scope.printsol.cheese_qty.push($scope.cSelect[luck]);
+		currid = parseInt($scope.cSelectId[luck]);
+	    if ($scope.solution.cheese_id.indexOf(currid) == -1) {
+	      $scope.solution.cheese_id.push(currid);
+	      $scope.solution.cheese_qty.push(1);
+	    } else {
+	      $scope.solution.cheese_qty[$scope.solution.cheese_id.indexOf(currid)] += 1; 
+	    }
 	  }
 	}
 	// Veggies
@@ -284,8 +314,14 @@ angular.module('App').controller('AppCtrl', function(
 	  repeat = getRandomInt(1, $scope.vSelect.length);
       for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(0, $scope.vSelect.length-1);
-	    $scope.solution.vegetable_qty.push($scope.vSelect[luck]);
-	    $scope.solution.vegetable_id.push($scope.vSelectId[luck]);
+	    $scope.printsol.vegetable_qty.push($scope.vSelect[luck]);
+		currid = parseInt($scope.vSelectId[luck]);
+	    if ($scope.solution.vegetable_id.indexOf(currid) == -1) {
+	      $scope.solution.vegetable_id.push(currid);
+	      $scope.solution.vegetable_qty.push(1);
+	    } else {
+	      $scope.solution.vegetable_qty[$scope.solution.vegetable_id.indexOf(currid)] += 1; 
+	    }
 	  }
 	}
 	// Sauce
@@ -296,11 +332,26 @@ angular.module('App').controller('AppCtrl', function(
 	  repeat = getRandomInt(1, $scope.sSelect.length);
       for (i = 0; i < repeat; ++i) {
 		luck = getRandomInt(0, $scope.sSelect.length-1);
-	    $scope.solution.sauce_qty.push($scope.sSelect[luck]);
-	    $scope.solution.sauce_id.push($scope.sSelectId[luck]);
+	    $scope.printsol.sauce_qty.push($scope.sSelect[luck]);
+		currid = parseInt($scope.sSelectId[luck]);
+	    if ($scope.solution.sauce_id.indexOf(currid) == -1) {
+	      $scope.solution.sauce_id.push(currid);
+	      $scope.solution.sauce_qty.push(1);
+	    } else {
+	      $scope.solution.sauce_qty[$scope.solution.sauce_id.indexOf(currid)] += 1; 
+	    }
 	  }
 	}
-	$scope.solution.cheese_qty = JSON.parse(JSON.stringify($scope.solution.cheese_qty))
+	
+	// Stringify in here to make it easier
+	$scope.solution.meat_qty = $scope.solution.meat_qty.toString();
+	$scope.solution.cheese_qty = $scope.solution.cheese_qty.toString();
+	$scope.solution.vegetable_qty = $scope.solution.vegetable_qty.toString();
+	$scope.solution.sauce_qty = $scope.solution.sauce_qty.toString();
+	$scope.solution.meat_id = $scope.solution.meat_id.toString();
+	$scope.solution.cheese_id = $scope.solution.cheese_id.toString();
+	$scope.solution.vegetable_id = $scope.solution.vegetable_id.toString();
+	$scope.solution.sauce_id = $scope.solution.sauce_id.toString();
 	
 	var info = [$scope.solution, getCookie("usermail")];
 	var data = {

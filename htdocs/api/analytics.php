@@ -2,7 +2,8 @@
 /*
 Inserted data I tested with:
 
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", "3,6", "2,1", "1", "1", "9", "1", "7,3", "1,1");
+This insert isn't correct anymore
+INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", '"[3,6]"', '"[2,1]"', '"[1]"', '"[1]"', '"[9]"', '"[1]"', '"[7,3]"', '"[1,1]"');
 INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", "3,2", "2,1", "1", "1", "9", "1", "7,1", "1,2");
 INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", "3", "2", "4,1", "1,1", "9,3", "1,1", "7,2", "1,1");
 INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", "3", "2", "4", "1", "9", "1", "7", "1");
@@ -147,7 +148,6 @@ for ($i = 0; $i < sizeof($data); $i++){
 	unset($result);
 
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
-	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 }
 
@@ -163,7 +163,8 @@ unset($result);
 $values = [];
 $numEntries = 0;
 for ($i = 0; $i < sizeof($data); $i++){
-	$temp = implode(',', $data[$i]);
+	$temp = str_replace('"[', "", $data[$i][0]);
+	$temp = str_replace(']"', "", $temp);
 	$splitValues = explode(',', $temp);
 	for ($j = 0; $j < sizeof($splitValues); $j++){
 		if (array_key_exists($splitValues[$j], $values)){
@@ -200,7 +201,6 @@ foreach ($values as $key => $value){
 	unset($result);
 
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
-	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
 		break;
@@ -222,7 +222,8 @@ unset($result);
 $values = [];
 $numEntries = 0;
 for ($i = 0; $i < sizeof($data); $i++){
-	$temp = implode(',', $data[$i]);
+	$temp = str_replace('"[', "", $data[$i][0]);
+	$temp = str_replace(']"', "", $temp);
 	$splitValues = explode(',', $temp);
 	for ($j = 0; $j < sizeof($splitValues); $j++){
 		if (array_key_exists($splitValues[$j], $values)){
@@ -258,7 +259,6 @@ foreach ($values as $key => $value){
 	unset($result);
 
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
-	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
 		break;
@@ -280,7 +280,8 @@ unset($result);
 $values = [];
 $numEntries = 0;
 for ($i = 0; $i < sizeof($data); $i++){
-	$temp = implode(',', $data[$i]);
+	$temp = str_replace('"[', "", $data[$i][0]);
+	$temp = str_replace(']"', "", $temp);
 	$splitValues = explode(',', $temp);
 	for ($j = 0; $j < sizeof($splitValues); $j++){
 		if (array_key_exists($splitValues[$j], $values)){
@@ -337,7 +338,8 @@ unset($result);
 $values = [];
 $numEntries = 0;
 for ($i = 0; $i < sizeof($data); $i++){
-	$temp = implode(',', $data[$i]);
+	$temp = str_replace('"[', "", $data[$i][0]);
+	$temp = str_replace(']"', "", $temp);
 	$splitValues = explode(',', $temp);
 	for ($j = 0; $j < sizeof($splitValues); $j++){
 		if (array_key_exists($splitValues[$j], $values)){
@@ -373,7 +375,6 @@ foreach ($values as $key => $value){
 	unset($result);
 
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
-	//$jsonString = $jsonString . '["' . $innerData[0]['name'] . '", "' . $innerData[0]['calories'] . '", "' . $innerData[0]['pictureURL'] . '"]';
 
 	if ($i == 2){
 		break;

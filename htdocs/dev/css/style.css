@@ -37,15 +37,6 @@ md-content {
 
 .section {
 	height: 100vh;
-<<<<<<< HEAD
-	width: 100vw;
-	margin-bottom: 100vh;
-}
-
-.clicked {
-	background-color:#e21212;
-}
-=======
 	/*width: 100vw;*/
 	/*margin-bottom: 100vh;*/
 }
@@ -60,4 +51,3 @@ md-content {
     padding-bottom: 5%;
 }
 
->>>>>>> origin/master

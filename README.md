@@ -23,46 +23,6 @@ Repo for a great sandwich statistic site
         - Sign out?
         - Log in
     - Endpoint implementation 
-        - [7]Get all product list
-            - Endpoint: GET /api/allProducts.php
-            - Authorization: public
-            - Request Body: Empty
-            - Response: 200
-        - [8]Get private product list
-            - Endpoint: GET /api/private/products.php
-            - Authorization: request user login
-            - Request Body: user mail
-            - Response: 200
-        - [9]Calculate calories 
-            - Endpoint: GET /api/getCalories.php
-            - Authorization: public
-            - Request Body: product id
-            - Response: 200
-        - [10]Get most 3 popular bread
-            - Endpoint: GET /api/getPopularBread.php
-            - Authorization: public
-            - Request Body: Empty
-            - Response: 200
-        - [11]Get most 3 popular Meat
-            - Endpoint: GET /api/getPopularMeat.php
-            - Authorization: public
-            - Request Body: Empty
-            - Response: 200
-        - [12]Get most 3 popular Cheese
-            - Endpoint: GET /api/getPopularCheese.php
-            - Authorization: public
-            - Request Body: Empty
-            - Response: 200
-        - [13]Get most 3 popular vegetables
-            - Endpoint: GET /api/getPopularvegetables.php
-            - Authorization: public
-            - Request Body: Empty
-            - Response: 200
-        - [14]Get most 3 popular sauce
-            - Endpoint: GET /api/getPopularsauce.php
-            - Authorization: public
-            - Request Body: Empty
-            - Response: 200
 
 
 
@@ -123,5 +83,25 @@ Repo for a great sandwich statistic site
 - [6]Get product by user id
     - Endpoint: GET /api/user_id.php
     - Authorization: user
+    - Request Body: Empty
+    - Response: 200
+- [7]Get all product list
+    - Endpoint: GET /api/allProducts.php
+    - Authorization: public
+    - Request Body: Empty
+    - Response: 200
+- [8]Get private product list
+    - Endpoint: GET /api/private/products.php
+    - Authorization: request user login
+    - Request Body: user mail
+    - Response: 200
+- [9]Calculate calories 
+    - Endpoint: GET /api/getCalories.php
+    - Authorization: public
+    - Request Body: product id
+    - Response: 200
+- [10]Get most popular ingredients
+    - Endpoint: GET /api/analytics.php
+    - Authorization: public
     - Request Body: Empty
     - Response: 200

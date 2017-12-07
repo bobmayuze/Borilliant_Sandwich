@@ -1,6 +1,6 @@
 body {
   overflow: auto;
-  background-color: #EEEEEE;
+  margin: auto;
 }
 
 md-whiteframe {
@@ -37,8 +37,6 @@ md-content {
 
 .section {
 	height: 100vh;
-	/*width: 100vw;*/
-	/*margin-bottom: 100vh;*/
 }
 
 .clicked {   

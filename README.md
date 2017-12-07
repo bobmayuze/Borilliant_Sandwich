@@ -1,6 +1,14 @@
 # Borilliant_Sandwich
 Repo for a great sandwich statistic site
 
+# Getting Started
+
+1. Download from github or unzip it from the zip file
+```
+$ git clone 
+```
+
+## Download the project, if you don't have access it, you can 
 
 # TODO 
 - Backend

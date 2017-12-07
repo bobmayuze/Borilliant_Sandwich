@@ -116,52 +116,51 @@
         </md-card>
     </div>
 
-
-
     <!-- Combo records -->
     <div class="combo center section container">
       <h1>Popular Combos</h1>
-      <div class="combo" ng-repeat="record in allProducts">
+      <div class="combo" ng-repeat="combo in allProducts">
 
         <md-card class="md-card-image card" >
-        <img ng-src ={{record.bread_url}} alt="Smiley face" height="280px">
+        <img ng-src ={{combo.bread_url}} alt="Smiley face" height="280px">
         <md-card-content>
-        <h1 class="md-caption">{{record.bread_name}}</h1>
+        <h1 class="md-caption">{{combo.bread_name}}</h1>
         </md-card-content>
         <br>
         </md-card>
 
-        <md-card class="md-card-image card" >
-        <img ng-src ={{record.meat_url}} alt="Smiley face" height="280px">
+        <md-card class="md-card-image card" ng-repeat="meat in combo.meat_name" >
+        <img ng-src ={{combo.meat_url[$index]}} alt="Smiley face" height="280px">
         <md-card-content>
-        <h1 class="md-caption">{{record.meat_name}}</h1>
+        <h1 class="md-caption">{{meat}}</h1>
         </md-card-content>
         <br>
         </md-card>
 
-        <md-card class="md-card-image card" >
-        <img ng-src ={{record.cheese_url}} alt="Smiley face" height="280px">
+        <md-card class="md-card-image card" ng-repeat="cheese in combo.cheese_name" >
+        <img ng-src ={{combo.cheese_url[$index]}} alt="Smiley face" height="280px">
         <md-card-content>
-        <h1 class="md-caption">{{record.cheese_name}}</h1>
+        <h1 class="md-caption">{{cheese}}</h1>
         </md-card-content>
         <br>
         </md-card>
 
-        <md-card class="md-card-image card" >
-        <img ng-src ={{record.vegetable_url}} alt="Smiley face" height="280px">
+        <md-card class="md-card-image card" ng-repeat="vegetable in combo.vegetable_name" >
+        <img ng-src ={{combo.vegetable_url[$index]}} alt="Smiley face" height="280px">
         <md-card-content>
-        <h1 class="md-caption">{{record.vegetable_name}}</h1>
+        <h1 class="md-caption">{{vegetable}}</h1>
         </md-card-content>
         <br>
         </md-card>
 
-        <md-card class="md-card-image card" >
-        <img ng-src ={{record.sauce_url}} alt="Smiley face" height="280px">
+        <md-card class="md-card-image card" ng-repeat="sauce in combo.sauce_name" >
+        <img ng-src ={{combo.sauce_url[$index]}} alt="Smiley face" height="280px">
         <md-card-content>
-        <h1 class="md-caption">{{record.sauce_name}}</h1>
+        <h1 class="md-caption">{{sauce}}</h1>
         </md-card-content>
         <br>
         </md-card>
+
 
       </div>
     </div>

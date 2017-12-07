@@ -1,3 +1,34 @@
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+var usermail = getCookie("usermail");
+var userName = "XD";
+var userLogedIn = false;
+
+if (!usermail) { 
+  userName = "Tourst";
+} else {
+  userLogedIn = true;
+  userName = decodeURIComponent(usermail);
+}
 angular.module('App', [
   'ngMaterial'
 ]);
@@ -16,6 +47,7 @@ angular.module('App').controller('AppCtrl', function(
   $scope.toast = function(message) {
     var toast = $mdToast.simple().content('You clicked ' + message).position('bottom right');
     $mdToast.show(toast);
+    window.location.href=message;
   };
   // selected elements
   $scope.vSelect = [];
@@ -79,6 +111,7 @@ angular.module('App').controller('AppCtrl', function(
   
   $scope.data = {
     title : "Borilliant Sandwich",
+    userName : userName,
     toolbar: {
       buttons: [{
         name: 'Insight',
@@ -90,23 +123,24 @@ angular.module('App').controller('AppCtrl', function(
         icon: 'account_circle',
         width: '4',
         actions: [{
-          name: 'Login/Signup',
-          message: 'Please Login first',
+          name: 'Login',
+          message: '../user/logIn.html',
           completed: true,
           error: true
         }, {
-          name: 'Action 2',
-          message: 'Action 2',
-          completed: false,
-          error: false
+          name: 'Sign Up',
+          message: '../user/signUp.html',
+          completed: true,
+          error: true
         }, {
-          name: 'Action 3',
-          message: 'Action 3',
+          name: 'Home Page',
+          message: '../main.html',
           completed: true,
           error: true
         }]
       }]
     }
+
   }
   
   $scope.solution = {

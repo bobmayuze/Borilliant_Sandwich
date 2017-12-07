@@ -38,7 +38,6 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
 
     $bread_id=$rs["bread_id"];
     $bread_url;
-    $bread_calories;
     $name = $conn->query("SELECT * FROM `tbl_ingredient_bread` WHERE id=$bread_id");
     while ($row = $name->fetch_assoc()) {
         if (!$row) {
@@ -49,91 +48,152 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $bread_calories=$row['calories'];
     }
     $bread_qty=$rs["bread_qty"];
-    $bread_calories*=$bread_qty;
 
 
-    $meat_name=$rs["meat_id"];
-    $meat_url;
-    $meat_calories;
-    $name = $conn->query("SELECT * FROM `tbl_ingredient_meat` WHERE id=$meat_name");
-    while ($row = $name->fetch_assoc()) {
-        if (!$row) {
-            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
-        }
-        $meat_name= $row['name'];
-        $meat_url=$row['pictureURL'];
-        $meat_calories=$row['calories'];
+    $meatid_array = $rs["meat_id"];
+    $temp=str_replace('"[', "", $meatid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $meatid_array=explode(',',$temp);
+    foreach ($meatid_array AS $index => $value) {
+        $meatid_array[$index] = (int)$value;
     }
-    $meat_qty=$rs["meat_qty"];
-    $meat_calories*=$meat_qty;
-
-
-    $cheese_name=$rs["cheese_id"];
-    $cheese_url;
-    $cheese_calories;
-    $name = $conn->query("SELECT * FROM `tbl_ingredient_cheese` WHERE id=$cheese_name");
-    while ($row = $name->fetch_assoc()) {
-        if (!$row) {
-            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
-        }
-        $cheese_name= $row['name'];
-        $cheese_url=$row['pictureURL'];
-        $cheese_calories=$row['calories'];
+    $meatname_array=array();
+    $meatqty_array = str_split($rs["meat_qty"]);
+    $meatqty_result=array();
+    for ($i=2;$i<count($meatqty_array)-2;$i++){
+        array_push($meatqty_result,$meatqty_array[$i]);
+        $i++;
     }
-    $cheese_qty=$rs["cheese_qty"];
-    $cheese_calories*=$cheese_qty;
+    $meaturl_array=array();
+    for ($i=0;$i<count($meatid_array);$i++){
+        $name = $conn->query("SELECT * FROM `tbl_ingredient_meat` WHERE id=$meatid_array[$i]");
+        while ($row = $name->fetch_assoc()) {
+            if (!$row) {
+                throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+            }
+            array_push($meatname_array, $row['name']);
+            array_push($meaturl_array, $row['pictureURL']);
 
-    $vegetable_name=$rs["vegetable_id"];
-    $vegetable_url;
-    $vegetable_calories;
-    $name = $conn->query("SELECT * FROM `tbl_ingredient_vegetable` WHERE id=$vegetable_name");
-    while ($row = $name->fetch_assoc()) {
-        if (!$row) {
-            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
         }
-        $vegetable_name= $row['name'];
-        $vegetable_url=$row['pictureURL'];
-        $vegetable_calories=$row['calories'];
-    }
-    $vegetable_qty=$rs["vegetable_qty"];
-    $vegetable_calories*=$vegetable_qty;
 
-    $sauce_name=$rs["sauce_id"];
-    $sauce_url;
-    $sauce_calories;
-    $name = $conn->query("SELECT * FROM `tbl_ingredient_sauce` WHERE id=$sauce_name");
-    while ($row = $name->fetch_assoc()) {
-        if (!$row) {
-            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
-        }
-        $sauce_name= $row['name'];
-        $sauce_url=$row['pictureURL'];
-        $sauce_calories=$row['calories'];
     }
-    $sauce_qty=$rs["sauce_qty"];
-    $sauce_calories*=$sauce_qty;
-    $temp_cal=$bread_calories+$meat_calories+$vegetable_calories+$sauce_calories+$cheese_calories;
+    $meatname_result = '['.implode(",", $meatname_array).']';
+    $meaturl_result = '['.implode(",", $meaturl_array).']';
+    $meatqty_result_ = '['.implode(",", $meatqty_result).']';
+
+    $vegetableid_array = $rs["vegetable_id"];
+    $temp=str_replace('"[', "", $vegetableid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $vegetableid_array=explode(',',$temp);
+    foreach ($vegetableid_array AS $index => $value) {
+        $vegetableid_array[$index] = (int)$value;
+    }
+    $vegetablename_array=array();
+    $vegetableqty_array = str_split($rs["vegetable_qty"]);
+    $vegetableqty_result=array();
+    for ($i=2;$i<count($vegetableqty_array)-2;$i++){
+        array_push($vegetableqty_result,$vegetableqty_array[$i]);
+        $i++;
+    }
+    $vegetableurl_array=array();
+    for ($i=0;$i<count($vegetableid_array);$i++){
+        $name = $conn->query("SELECT * FROM `tbl_ingredient_vegetable` WHERE id=$vegetableid_array[$i]");
+        while ($row = $name->fetch_assoc()) {
+            if (!$row) {
+                throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+            }
+            array_push($vegetablename_array, $row['name']);
+            array_push($vegetableurl_array, $row['pictureURL']);
+
+        }
+    }
+    $vegetablename_result = '['.implode(",", $vegetablename_array).']';
+    $vegetableurl_result = '['.implode(",", $vegetableurl_array).']';
+    $vegetableqty_result_ = '['.implode(",", $vegetableqty_result).']';
+
+    $cheeseid_array = $rs["cheese_id"];
+    $temp=str_replace('"[', "", $cheeseid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $cheeseid_array=explode(',',$temp);
+    foreach ($cheeseid_array AS $index => $value) {
+        $cheeseid_array[$index] = (int)$value;
+    }
+    $cheesename_array=array();
+    $cheeseqty_array = str_split($rs["cheese_qty"]);
+    $cheeseqty_result=array();
+    for ($i=2;$i<count($cheeseqty_array)-2;$i++){
+        array_push($cheeseqty_result,$cheeseqty_array[$i]);
+        $i++;
+    }
+    $cheeseurl_array=array();
+    for ($i=0;$i<count($cheeseid_array);$i++){
+        $name = $conn->query("SELECT * FROM `tbl_ingredient_cheese` WHERE id=$cheeseid_array[$i]");
+        while ($row = $name->fetch_assoc()) {
+            if (!$row) {
+                throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+            }
+            array_push($cheesename_array, $row['name']);
+            array_push($cheeseurl_array, $row['pictureURL']);
+
+        }
+    }
+    $cheesename_result = '['.implode(",", $cheesename_array).']';
+    $cheeseurl_result = '['.implode(",", $cheeseurl_array).']';
+    $cheeseqty_result_ = '['.implode(",", $cheeseqty_result).']';
+
+    $sauceid_array = $rs["sauce_id"];
+    $temp=str_replace('"[', "", $sauceid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $sauceid_array=explode(',',$temp);
+    foreach ($sauceid_array AS $index => $value) {
+        $sauceid_array[$index] = (int)$value;
+    }
+    $saucename_array=array();
+    $sauceqty_array = str_split($rs["sauce_qty"]);
+    $sauceqty_result=array();
+    for ($i=2;$i<count($sauceqty_array)-2;$i++){
+        array_push($sauceqty_result,$sauceqty_array[$i]);
+        $i++;
+    }
+    $sauceurl_array=array();
+    for ($i=0;$i<count($sauceid_array);$i++){
+        $name = $conn->query("SELECT * FROM `tbl_ingredient_sauce` WHERE id=$sauceid_array[$i]");
+        while ($row = $name->fetch_assoc()) {
+            if (!$row) {
+                throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+            }
+            array_push($saucename_array, $row['name']);
+            array_push($sauceurl_array, $row['pictureURL']);
+
+        }
+    }
+    $saucename_result = '['.implode(",", $saucename_array).']';
+    $sauceurl_result = '['.implode(",", $sauceurl_array).']';
+    $sauceqty_result_ = '['.implode(",", $sauceqty_result).']';
 
 
     if ($outp != "") {$outp .= ",";}
     $outp .= '{"combo":"'  . $rs["id"] . '",';
     $outp .= '"creater_name":"'   . $creater_id . '",';
-    $outp .= '"Total_calories":"'   . $temp_cal . '",';
     $outp .= '"bread_name":"'   . $bread_id . '",';
     $outp .= '"bread_qty":"'   . $bread_qty . '",';
     $outp .= '"bread_url":"'   . $bread_url . '",';
-    $outp .= '"meat_name":"'   . $meat_name . '",';
-    $outp .= '"meat_qty":"'   . $meat_qty . '",';
-    $outp .= '"meat_url":"'   . $meat_url . '",';
-    $outp .= '"cheese_name":"'   . $cheese_name . '",';
-    $outp .= '"cheese_qty":"'   . $cheese_qty . '",';
-    $outp .= '"cheese_url":"'   . $cheese_url . '",';
-    $outp .= '"vegetable_name":"'   . $vegetable_name . '",';
-    $outp .= '"vegetable_qty":"'   . $vegetable_qty . '",';
-    $outp .= '"vegetable_url":"'   . $vegetable_url . '",';
-    $outp .= '"sauce_name":"'   . $sauce_name . '",';
-    $outp .= '"sauce_url":"'   . $sauce_url . '",';
-    $outp .= '"sauce_qty":"'   . $sauce_qty . '"}';
+    $outp .= '"meat_name":"'   . $meatname_result . '",';
+    $outp .= '"meat_qty":"'   . $meatqty_result_ . '",';
+    $outp .= '"meat_url":"'   . $meaturl_result . '",';
+    $outp .= '"cheese_name":"'   . $cheesename_result . '",';
+    $outp .= '"cheese_qty":"'   . $cheeseqty_result_ . '",';
+    $outp .= '"cheese_url":"'   . $cheeseurl_result . '",';
+    $outp .= '"vegetable_name":"'   . $vegetablename_result . '",';
+    $outp .= '"vegetable_qty":"'   . $vegetableqty_result_ . '",';
+    $outp .= '"vegetable_url":"'   . $vegetableurl_result . '",';
+    $outp .= '"sauce_name":"'   . $saucename_result . '",';
+    $outp .= '"sauce_url":"'   . $sauceurl_result. '",';
+    $outp .= '"sauce_qty":"'   . $sauceqty_result_ . '"}';
 }
 
 $outp ='{"records":['.$outp.']}';

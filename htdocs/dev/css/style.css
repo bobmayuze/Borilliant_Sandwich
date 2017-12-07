@@ -41,6 +41,10 @@ md-content {
 	/*margin-bottom: 100vh;*/
 }
 
+.clicked {   
+  background-color:#e21212;   
+}
+
 .v-center {  
     padding-top: 15%;
     padding-bottom: 10%;

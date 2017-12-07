@@ -49,23 +49,35 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $bread_calories=$row['calories'];
     }
     $bread_qty=$rs["bread_qty"];
-    $bread_calories*=$bread_qty;
 
 
-    $meat_name=$rs["meat_id"];
-    $meat_url;
-    $meat_calories;
-    $name = $conn->query("SELECT * FROM `tbl_ingredient_meat` WHERE id=$meat_name");
-    while ($row = $name->fetch_assoc()) {
-        if (!$row) {
-            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
-        }
-        $meat_name= $row['name'];
-        $meat_url=$row['pictureURL'];
-        $meat_calories=$row['calories'];
+    $meatid_array = str_split($rs["meat_id"]);
+    for ($i=0;$i<count($meatid_array);$i++){
+        echo ($meatid_array[$i]);
+
+        echo "</br>";
     }
-    $meat_qty=$rs["meat_qty"];
-    $meat_calories*=$meat_qty;
+    $meatname_array=array();
+    $meatqty_array = str_split($rs["meat_qty"]);
+    $meaturl_array=array();
+
+
+    
+
+    for ($i=1;$i<count($meatid_array)-1;$i++){
+        $name = $conn->query("SELECT * FROM `tbl_ingredient_meat` WHERE id=(int)$meatid_array[$i]");
+        while ($row = $name->fetch_assoc()) {
+            if (!$row) {
+                throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
+            }
+            array_push($meatname_array, $row['name']);
+            array_push($meaturl_array, $row['pictureURL']);
+        }
+        $i++;
+    }
+
+
+
 
 
     $cheese_name=$rs["cheese_id"];
@@ -81,7 +93,6 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $cheese_calories=$row['calories'];
     }
     $cheese_qty=$rs["cheese_qty"];
-    $cheese_calories*=$cheese_qty;
 
     $vegetable_name=$rs["vegetable_id"];
     $vegetable_url;
@@ -96,7 +107,6 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $vegetable_calories=$row['calories'];
     }
     $vegetable_qty=$rs["vegetable_qty"];
-    $vegetable_calories*=$vegetable_qty;
 
     $sauce_name=$rs["sauce_id"];
     $sauce_url;
@@ -111,14 +121,12 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $sauce_calories=$row['calories'];
     }
     $sauce_qty=$rs["sauce_qty"];
-    $sauce_calories*=$sauce_qty;
-    $temp_cal=$bread_calories+$meat_calories+$vegetable_calories+$sauce_calories+$cheese_calories;
+
 
 
     if ($outp != "") {$outp .= ",";}
     $outp .= '{"combo":"'  . $rs["id"] . '",';
     $outp .= '"creater_name":"'   . $creater_id . '",';
-    $outp .= '"Total_calories":"'   . $temp_cal . '",';
     $outp .= '"bread_name":"'   . $bread_id . '",';
     $outp .= '"bread_qty":"'   . $bread_qty . '",';
     $outp .= '"bread_url":"'   . $bread_url . '",';

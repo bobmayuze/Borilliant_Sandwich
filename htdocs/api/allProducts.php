@@ -50,7 +50,14 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $bread_qty=$rs["bread_qty"];
 
 
-    $meatid_array = str_split($rs["meat_id"]);
+    $meatid_array = $rs["meat_id"];
+    $temp=str_replace('"[', "", $meatid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $meatid_array=explode(',',$temp);
+    foreach ($meatid_array AS $index => $value) {
+        $meatid_array[$index] = (int)$value;
+    }
     $meatname_array=array();
     $meatqty_array = str_split($rs["meat_qty"]);
     $meatqty_result=array();
@@ -59,7 +66,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $i++;
     }
     $meaturl_array=array();
-    for ($i=2;$i<count($meatid_array)-2;$i++){
+    for ($i=0;$i<count($meatid_array);$i++){
         $name = $conn->query("SELECT * FROM `tbl_ingredient_meat` WHERE id=$meatid_array[$i]");
         while ($row = $name->fetch_assoc()) {
             if (!$row) {
@@ -69,13 +76,20 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
             array_push($meaturl_array, $row['pictureURL']);
 
         }
-        $i++;
+
     }
     $meatname_result = '['.implode(",", $meatname_array).']';
     $meaturl_result = '['.implode(",", $meaturl_array).']';
     $meatqty_result_ = '['.implode(",", $meatqty_result).']';
 
-    $vegetableid_array = str_split($rs["vegetable_id"]);
+    $vegetableid_array = $rs["vegetable_id"];
+    $temp=str_replace('"[', "", $vegetableid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $vegetableid_array=explode(',',$temp);
+    foreach ($vegetableid_array AS $index => $value) {
+        $vegetableid_array[$index] = (int)$value;
+    }
     $vegetablename_array=array();
     $vegetableqty_array = str_split($rs["vegetable_qty"]);
     $vegetableqty_result=array();
@@ -84,7 +98,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $i++;
     }
     $vegetableurl_array=array();
-    for ($i=2;$i<count($vegetableid_array)-2;$i++){
+    for ($i=0;$i<count($vegetableid_array);$i++){
         $name = $conn->query("SELECT * FROM `tbl_ingredient_vegetable` WHERE id=$vegetableid_array[$i]");
         while ($row = $name->fetch_assoc()) {
             if (!$row) {
@@ -94,13 +108,19 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
             array_push($vegetableurl_array, $row['pictureURL']);
 
         }
-        $i++;
     }
     $vegetablename_result = '['.implode(",", $vegetablename_array).']';
     $vegetableurl_result = '['.implode(",", $vegetableurl_array).']';
     $vegetableqty_result_ = '['.implode(",", $vegetableqty_result).']';
 
-    $cheeseid_array = str_split($rs["cheese_id"]);
+    $cheeseid_array = $rs["cheese_id"];
+    $temp=str_replace('"[', "", $cheeseid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $cheeseid_array=explode(',',$temp);
+    foreach ($cheeseid_array AS $index => $value) {
+        $cheeseid_array[$index] = (int)$value;
+    }
     $cheesename_array=array();
     $cheeseqty_array = str_split($rs["cheese_qty"]);
     $cheeseqty_result=array();
@@ -109,7 +129,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $i++;
     }
     $cheeseurl_array=array();
-    for ($i=2;$i<count($cheeseid_array)-2;$i++){
+    for ($i=0;$i<count($cheeseid_array);$i++){
         $name = $conn->query("SELECT * FROM `tbl_ingredient_cheese` WHERE id=$cheeseid_array[$i]");
         while ($row = $name->fetch_assoc()) {
             if (!$row) {
@@ -119,13 +139,19 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
             array_push($cheeseurl_array, $row['pictureURL']);
 
         }
-        $i++;
     }
     $cheesename_result = '['.implode(",", $cheesename_array).']';
     $cheeseurl_result = '['.implode(",", $cheeseurl_array).']';
     $cheeseqty_result_ = '['.implode(",", $cheeseqty_result).']';
 
-    $sauceid_array = str_split($rs["sauce_id"]);
+    $sauceid_array = $rs["sauce_id"];
+    $temp=str_replace('"[', "", $sauceid_array);
+    $temp=str_replace(']"', "", $temp);
+    $temp;
+    $sauceid_array=explode(',',$temp);
+    foreach ($sauceid_array AS $index => $value) {
+        $sauceid_array[$index] = (int)$value;
+    }
     $saucename_array=array();
     $sauceqty_array = str_split($rs["sauce_qty"]);
     $sauceqty_result=array();
@@ -134,7 +160,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $i++;
     }
     $sauceurl_array=array();
-    for ($i=2;$i<count($sauceid_array)-2;$i++){
+    for ($i=0;$i<count($sauceid_array);$i++){
         $name = $conn->query("SELECT * FROM `tbl_ingredient_sauce` WHERE id=$sauceid_array[$i]");
         while ($row = $name->fetch_assoc()) {
             if (!$row) {
@@ -144,7 +170,6 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
             array_push($sauceurl_array, $row['pictureURL']);
 
         }
-        $i++;
     }
     $saucename_result = '['.implode(",", $saucename_array).']';
     $sauceurl_result = '['.implode(",", $sauceurl_array).']';

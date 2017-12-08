@@ -12,7 +12,7 @@ to pull the image and
 ```
 $  docker run -tid --name itws bobmayuze/itws_2110:latest /bin/zsh
 ```
-To start a container. You may also need kitematic to do port fowarding.
+To start a container. You may also need [kitematic](https://kitematic.com/) to do port fowarding. Forward the port 80 from container to the host.
 
 Then, you may docker cp to copy the file. Here is an example how I do use this command. For more dockr command, check out [Docker](https://www.docker.com/)
 

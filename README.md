@@ -2,7 +2,7 @@
 Repo for a great sandwich statistic site
 
 # Getting Started
-0. This project is developed with XAMPP, thus XAMPP is recommended for deploying and testing. Go to [XAMPP](https://www.apachefriends.org/index.html) for more information.
+*This project is developed with XAMPP, thus XAMPP is recommended for deploying and testing. Go to [XAMPP](https://www.apachefriends.org/index.html) for more information.*
 
 If you are a docker user, we have an image published on docker hub. After downloading docker, use 
 ```
@@ -129,15 +129,15 @@ $ ./opt/lampp/xampp start
     - Response: 200
 
 # Challenges we've met and how we solved them
-1. Implementation of AngularJS
+## Implementation of AngularJS
 
 It was initially difficult to setup the frontend with AngularJS to make sample implementation because some angular elements, like "md-content", are new to us. We solved this by using "div" tags instead. This isn't the best way to solve the problem but it works. 
 
-2. Modularizing frontend and backend
+## Modularizing frontend and backend
 
 In newer tech stacks, like the MEAN stack, data is mostly passed in the JSON format. In the LAMP stack though, we don't have JSON. It took us quite a while to create a sample endpoint implementation for our frontend team because of this. We were able to solve this problem by using PHP code to collect the data from the SQL table, turn it into a JSON string, and then return the string.
 
-3. CROS, Cross-Origin Request
+## CORS, Cross-Origin Request
 Sometimes we had problems with cross origin requests. We were able to solve it by adding: 
 ```
 header("Access-Control-Allow-Origin: *");

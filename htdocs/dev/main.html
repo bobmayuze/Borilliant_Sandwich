@@ -56,7 +56,7 @@
     </div>
 
     <!-- {{selected | json }} -->
-    <section id="content" role="content" layout="column" layout-padding md-scroll-y>
+    <section class="main" id="content" role="content" layout="column" layout-padding md-scroll-y>
 
       <h1 class="center">BREAD</h1>
       <div class="md-whiteframe-z2"  ng-cloak> 
@@ -128,9 +128,9 @@
           </md-card>  
         </div>
       </div>
-	  <md-button  ng-click="randomize()" href="#solution">Create me a Sandwich</md-button></a>
+	  <md-button class="md-raised warn" ng-click="randomize()" href="#solution">Create me a Sandwich</md-button>
 	  <div class="center" id="solution">
-	    <h2 class="center">Solution!</h2>
+	    <h2 id="name" class="center">Solution!</h2>
         <h1>Bread</h1>
 		<p>{{solution.bread_qty}}</p>
 		<h1>Meat</h1>
@@ -143,8 +143,27 @@
 		<p ng-repeat="sauce in printsol.sauce_qty track by $index">{{sauce}}</p>
 	  </div>
     </section>
+	
   </section>
+  <footer class="page-footer">
+    <!-- <div class="container"> -->
+      <div class="row">
+        <div class="col l12 s12">
+          <h5 class="white-text center">Thanks For Using</h5>
+          <p class="grey-text text-lighten-4 center">Have a borilliant day!</p>
+
+
+        </div>
+
+      </div>
+    <div class="center">
+      <div class="container">
+      Made by <a class="" href="http://bobmayuze.github.io">Yuze Bob Ma, Jonathan Caicedo, Chelsea Carlson, Andrew Leaf, Honghao Li</a>
+      </div>
+    </div>
+  </footer>
   </div>
+  
 
 
 

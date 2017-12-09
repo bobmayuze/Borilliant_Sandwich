@@ -71,7 +71,7 @@
         <tbody>
           <tr ng-repeat="user in userData" class="center" >
             <td>
-              <input type="checkbox" ng-model="person.delete" />
+              <input type="checkbox" ng-model="user.delete" />
             </td>
                 <td>{{user.id}}</td>
             <td>{{user.username}}</td>
@@ -82,7 +82,7 @@
         </tbody>
           
       </table>
-      <input type="button" class="btn btn-success" value="Delete Selected" ng-click="ctrl.deletePenson()" />
+      <input type="button" class="btn btn-success" value="Delete Selected" ng-click="deletePerson()" />
     
     
     

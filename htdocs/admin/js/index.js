@@ -96,7 +96,27 @@ angular.module('App').controller('AppCtrl', function(
     }
 
   }
-
+  
+ $scope.deletePerson = function() {
+    var oldPeople = angular.copy($scope.userData);
+    var remove = [];
+    
+    angular.forEach(oldPeople, function(value, key) {
+      if (value.delete) {
+        remove.push(value.id);
+      }
+      
+    });
+    
+	$http.post('../api/deleteUser.php', {'idList':remove})
+      .success(function(data, status, headers, config) {
+        console.log(status + ' - ' + data);
+		window.location.reload(true);
+      }).error(function(data, status, headers, config) {
+        console.log('error');
+      });
+	
+  };
 
 });
 

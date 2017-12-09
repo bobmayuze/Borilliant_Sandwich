@@ -49,6 +49,17 @@ $ ./opt/lampp/xampp start
 
 ## Download the project, if you don't have access it, you can 
 
+#Purpose
+The purpose of this project is to help people construct and learn about 
+new types of sandwiches. This can not only help people find new sandwiches
+they can enjoy, but can shorten lines at sandwich eateries all over the
+world. People can plan what sandwich they want in advance at home or in 
+line, allowing them to know exactly what they want to eat when it's their
+turn to order. The website also gives calorie information on all ingredients
+so the user can know how healthy they're eating. With our website, sandwich
+lines will be shorter, people can find new types of sandwiches they may enjoy,
+and people can learn more nutrition facts about what they eat.
+
 # TODO 
 - Backend
     - Fix the allProducts.php(Honghao)

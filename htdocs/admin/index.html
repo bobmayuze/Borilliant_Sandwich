@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Borilliant ADMIN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css'>
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link rel="stylesheet" href="css/style.css">
+
+  
+  
+</head>
+
+<body>
+  
+  <div ng-app="App" ng-controller="AppCtrl" layout="row" layout-fill ng-cloak id="mainSection">
+  <section layout="column" role="main" flex>
+    <!-- Top Tool Bar START -->
+    <md-toolbar role="toolbar">
+      <div class="md-toolbar-tools">
+        <h4 class="md-title">{{data.title}}</h4>
+        <span flex></span>
+        
+        <md-button class="md-icon-button" ng-repeat="button in data.toolbar.buttons" aria-label={{button.name}} ng-click="toast(button.link)">
+          <md-icon>{{button.icon}}</md-icon>
+        </md-button>
+
+        <md-menu md-position-mode="target-right target" ng-repeat="menu in data.toolbar.menus">
+          
+          <md-button class="md-icon-button" aria-label="{{menu.name}}" ng-click="$mdOpenMenu($event)">
+            <md-icon>{{menu.icon}}</md-icon>
+          </md-button>
+
+          <md-menu-content width={{menu.width}}>
+            <md-subheader>{{menu.name}}</md-subheader>
+            <md-menu-item ng-repeat="action in menu.actions">
+              <md-button layout-fill md-ink-ripple ng-click="toast(action.message)">
+                <md-icon md-class="{{action.error ? 'md-warn' : 'md-primary'}}" md-menu-align-target>{{action.completed ? 'done' : 'hourglass_empty'}}</md-icon>
+                {{action.name}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+
+        </md-menu>
+      </div>
+    </md-toolbar>
+    <!-- Top Tool Bar END -->
+
+    <div class="center section container">
+      <div class="v-center">
+        <h1>Welcome to the better Sandwich Maker Admin Page</h1>
+        <h1>{{data.userName}}</h1>
+      </div>
+    </div>
+
+    <div class="row center">
+            <thead>
+          <tr>
+            <th>Delete</th>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>User Nickname</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+      <table class="table" layout="row" layout-align="center center">
+
+        
+        <tbody>
+          <tr ng-repeat="user in userData" class="center" >
+            <td>
+              <input type="checkbox" ng-model="person.delete" />
+            </td>
+                <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.nickname}}</td>
+            <td>{{user.activate}}</td>
+          </tr>
+          
+        </tbody>
+          
+      </table>
+      <input type="button" class="btn btn-success" value="Delete Selected" ng-click="ctrl.deletePenson()" />
+    
+    
+    
+    </div>
+
+    
+  </section>
+  </div>
+
+
+
+
+  <!-- javascript injection   -->
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js'></script>
+  
+  <script  src="js/index.js"></script>
+
+  
+</body>
+</html>

@@ -4,7 +4,7 @@ Repo for a great sandwich statistic site
 # Getting Started
 *This project is developed with XAMPP, thus XAMPP is recommended for deploying and testing. Go to [XAMPP](https://www.apachefriends.org/index.html) for more information.*
 
-If you are a docker user, we have an image published on docker hub. After downloading docker, use 
+## If you are a docker user, we have an image published on docker hub. After downloading docker, use 
 ```
 $ docker pull bobmayuze/itws_2110
 ```
@@ -45,7 +45,18 @@ $ ./opt/lampp/xampp start
 
 5. Go to the localhost and you are all set.
 
+## If you are not using docker
 
+1. Download from github or unzip it from the zip file
+```
+$ git clone https://github.com/bobmayuze/Borilliant_Sandwich
+
+```
+2. Start your XAMPP and Go to localhost/phpmyadmin, and import the file in db_migration/migration.sql
+
+3. You can then set up a virtual server within Apache to point at the file location and restart your server
+
+4. Navigate to "Your-virtual-server"/htdocs/dev/main.html and theres the homepage
 
 ## Download the project, if you don't already have it, you can download it from this repo 
 

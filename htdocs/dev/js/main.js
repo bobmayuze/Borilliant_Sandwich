@@ -26,7 +26,7 @@ var userLogedIn = false;
 
 // If no one is logged in show generic name
 if (!usermail) { 
-  userName = "Tourst";
+  userName = "tourist";
 } else {
   userLogedIn = true;
   userName = decodeURIComponent(usermail);

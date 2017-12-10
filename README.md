@@ -58,6 +58,8 @@ $ git clone https://github.com/bobmayuze/Borilliant_Sandwich
 
 4. Navigate to "Your-virtual-server"/htdocs/dev/main.html and theres the homepage
 
+5. Sign as admin account: account: "yuze@123.com", password: "123456". This will lead you the the admin page.
+
 ## Download the project, if you don't already have it, you can download it from this repo 
 
 # Purpose

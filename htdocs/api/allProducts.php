@@ -35,7 +35,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
         $creater_id= $row['username'];
     }
 
-
+    //get the number and name of the bread
     $bread_id=$rs["bread_id"];
     $bread_url;
     $name = $conn->query("SELECT * FROM `tbl_ingredient_bread` WHERE id=$bread_id");
@@ -50,6 +50,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $bread_qty=$rs["bread_qty"];
 
 
+    //get the number and name URL of the meat
     $meatid_array = $rs["meat_id"];
     $temp=str_replace('"[', "", $meatid_array);
     $temp=str_replace(']"', "", $temp);
@@ -82,6 +83,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $meaturl_result = '['.implode(",", $meaturl_array).']';
     $meatqty_result_ = '['.implode(",", $meatqty_result).']';
 
+    //get the number and name URL of the vegetable
     $vegetableid_array = $rs["vegetable_id"];
     $temp=str_replace('"[', "", $vegetableid_array);
     $temp=str_replace(']"', "", $temp);
@@ -113,6 +115,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $vegetableurl_result = '['.implode(",", $vegetableurl_array).']';
     $vegetableqty_result_ = '['.implode(",", $vegetableqty_result).']';
 
+    //get the number and name URL of the cheese
     $cheeseid_array = $rs["cheese_id"];
     $temp=str_replace('"[', "", $cheeseid_array);
     $temp=str_replace(']"', "", $temp);
@@ -144,6 +147,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $cheeseurl_result = '['.implode(",", $cheeseurl_array).']';
     $cheeseqty_result_ = '['.implode(",", $cheeseqty_result).']';
 
+    //get the number and name URL of the sauce
     $sauceid_array = $rs["sauce_id"];
     $temp=str_replace('"[', "", $sauceid_array);
     $temp=str_replace(']"', "", $temp);

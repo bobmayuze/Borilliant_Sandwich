@@ -8,8 +8,7 @@
       echo "Querying......";
       $result = $conn->prepare('SELECT * FROM `gredients`.`tbl_user` WHERE username = :email and password = :password');
       $result->execute(array(':email' => $email, ':password' => $password));
-      //$sql = "select * from tbl_user where username = '$email' and password='$password'";
-      //$result = mysql_query($sql);
+
       $rows=$result->fetch();
       if($rows){//0 false 1 true
           $cookie_name = "usermail";
@@ -26,7 +25,6 @@
 
           
       }else{
-        //print_r($result->fetch());
         echo "Wrong email or password";
         echo "
             <script>

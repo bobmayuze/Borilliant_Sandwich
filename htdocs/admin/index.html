@@ -48,15 +48,18 @@
     </md-toolbar>
     <!-- Top Tool Bar END -->
 
-    <div class="center section container">
-      <div class="v-center">
+    <div class="center-text">
+      <div class="">
         <h1>Welcome to the better Sandwich Maker Admin Page</h1>
         <h1>{{data.userName}}</h1>
+        <h1>Select the user you want to delete and submit the change.</h1>
       </div>
     </div>
 
     <div class="row center">
-            <thead>
+        
+      <table class="table" layout-align="center center">
+        <thead>
           <tr>
             <th>Delete</th>
             <th>ID</th>
@@ -65,8 +68,6 @@
             <th>Status</th>
           </tr>
         </thead>
-      <table class="table" layout="row" layout-align="center center">
-
         
         <tbody>
           <tr ng-repeat="user in userData" class="center" >

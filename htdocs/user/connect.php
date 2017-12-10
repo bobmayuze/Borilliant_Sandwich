@@ -7,6 +7,4 @@
     if(!$conn){
         die("can't connect");
     }
-    
-    //mysql_select_db('gredients',$con); // Choose database
 ?>

@@ -30,23 +30,30 @@ md-content {
   cursor:pointer;
   outline: none;
 }
+.center-text {
+  text-align: center;
+}
 
 .center {
 	text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin: auto;*/
+  /*width: 50%;*/
 }
 
-.section {
+/*.section {
 	height: 100vh;
-}
+}*/
 
 .clicked {   
   background-color:#e21212;   
 }
 
-.v-center {  
+/*.v-center {  
     padding-top: 15%;
     padding-bottom: 10%;
-}
+}*/
 
 .combo {  
     padding-top: 15%;

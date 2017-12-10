@@ -11,7 +11,7 @@ body {
 
 .mainAnalytics {
   height: auto;
-  margin-bottom: 45em;
+  /*margin-bottom: 45em;*/
 }
 
 .page-footer {
@@ -59,9 +59,9 @@ md-content {
 	text-align: center;
 }
 
-.section {
+/*.section {
 	height: 100vh;
-}
+}*/
 
 .clicked {   
   background-color:#e21212;   

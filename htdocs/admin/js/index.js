@@ -114,6 +114,7 @@ angular.module('App').controller('AppCtrl', function(
 		window.location.reload(true);
       }).error(function(data, status, headers, config) {
         console.log('error');
+		window.location.reload(true);
       });
 	
   };

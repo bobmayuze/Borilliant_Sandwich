@@ -1,37 +1,6 @@
 <?php
 /*
-Inserted data I tested with:
-
-This insert isn't correct anymore
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", '"[3,6]"', '"[2,1]"', '"[1]"', '"[1]"', '"[9]"', '"[1]"', '"[7,3]"', '"[1,1]"');
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", "3,2", "2,1", "1", "1", "9", "1", "7,1", "1,2");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", "3", "2", "4,1", "1,1", "9,3", "1,1", "7,2", "1,1");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "1", "2", "3", "2", "4", "1", "9", "1", "7", "1");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "10", "2", "3,8", "2,1", "4,2", "1,1", "2", "1", "7,5", "1,3");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "10", "2", "1", "2", "3,2", "1,1", "2", "1", "7,6", "1,1");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "10", "2", "1,4", "2,1", "3,2", "1,1", "2,1", "1,1", "7", "1");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "6", "2", "1", "2", "3,2", "1,1", "2", "1", "7,8", "1,1");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "6", "2", "2,4", "2,1", "3,2", "1,1", "6", "1", "7", "1");
-INSERT INTO tbl_combos (creater_id, bread_id, bread_qty, meat_id, meat_qty, cheese_id, cheese_qty, vegetable_id, vegetable_qty, sauce_id, sauce_qty) VALUES ("2", "5", "2", "2", "2", "3,2", "1,1", "6", "1", "1,10", "1,1");
-
-JavaScript code to get the top 3;
-function top3(){
-
-  $.ajax({
-    url      : "../api/analytics.php",
-    dataType : 'json',
-    type     : 'post',
-    success  : function(Result){
-      alert("Completed");
-      //result contains the json string
-      console.log(Result);
-
-      }
-  });
-
 //returned json string will look something like this:
-
-
 {
 	"top3": {
 		"bread": {
@@ -117,36 +86,45 @@ function top3(){
 	}
 }
 */
+//allow cross origin access
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
+//connect to the database
 include('../user/connect.php');
 
+//query to get the top 3 most common bread ids
 $result = $conn->prepare("SELECT bread_id, count(*) FROM tbl_combos GROUP BY bread_id ORDER BY count(*) DESC LIMIT 3");
 $result->execute();
 
+//string to hold all json, it will be converted into a json object at the end
 $jsonString = '{"top3":{';
 
+//get the results from the query
 $data = $result->fetchAll();
 
+//clear result so it can be used again
 unset($result);
 
 $jsonString = $jsonString . '"bread":[';
 
+//go through the returned most common bread ids
 for ($i = 0; $i < sizeof($data); $i++){
 
+	//add a comma to the end of the line unless this is the first trip through the loop
 	if ($i != 0){
 		$jsonString = $jsonString . ',';
 	}
 
+	//get the information of the bread with the corresponding bread id in the bread table
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_bread WHERE id = :id");
-
 	$result->execute(array(':id' => $data[$i]["bread_id"]));
-
 	$innerData = $result->fetchAll();
 
+	//clear result
 	unset($result);
 
+	//add the information on the bread to the json string
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 
 }
@@ -154,57 +132,74 @@ for ($i = 0; $i < sizeof($data); $i++){
 $jsonString = $jsonString . '],';
 //===========================================================================================
 //meat
+//query to get all meat ids in the combos table
+//each row will hold the different meat ids in that combo
 $result = $conn->prepare("SELECT meat_id FROM tbl_combos");
 $result->execute();
-
 $data = $result->fetchAll();
 
+//clear result
 unset($result);
+
+//map to hold ids as keys and the number of times they appear as values
 $values = [];
+//number of different kinds of the ingredient there are
 $numEntries = 0;
+//go through the results
 for ($i = 0; $i < sizeof($data); $i++){
+	//get rid of the extra characters
 	$temp = str_replace('"[', "", $data[$i][0]);
 	$temp = str_replace(']"', "", $temp);
+	//split the ids at the comma
 	$splitValues = explode(',', $temp);
+	//go through al ids in the sandwich
 	for ($j = 0; $j < sizeof($splitValues); $j++){
+		//if the id is already a key in the map, add 1 to the value
 		if (array_key_exists($splitValues[$j], $values)){
 			$values[$splitValues[$j]] = $values[$splitValues[$j]] + 1;
 		}else{
+			//else add the key to the map and there's one more ingredient
 			$values[$splitValues[$j]] = 1;
 			$numEntries++;
 		}
 	}
 }
 
-//All data is counted twice so I have to go back and divide everything by 2
+//All data is counted twice so I have to go back and divide values by 2
 foreach ($values as &$temp) {
     $temp = $temp / 2;
 }
 
+//sorts all the keys by value. This will put the 3 most common ids first in the map
 arsort($values);
 
 $jsonString = $jsonString . '"meat":[';
 
+//go through the map
 $i = 0;
 foreach ($values as $key => $value){
 
+	//if this is the first time through the loop, don't add a comma to the end
 	if ($i != 0){
 		$jsonString = $jsonString . ',';
 	}
 
-
+	//grab infromation on the ingredient with the matching id
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_meat WHERE id = :id");
 	$result->execute(array(':id' => $key));
-
 	$innerData = $result->fetchAll();
 
+	//clear result
 	unset($result);
 
+	//add the information to the json string
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 
+	//if this is the 3rd item, break out of the loop
 	if ($i == 2){
 		break;
 	}
+	//counter
 	$i++;
 }
 
@@ -213,56 +208,75 @@ $jsonString = $jsonString . '],';
 //=========================================================================================
 //===========================================================================================
 //cheese
+//query to get all cheese ids in the combos table
+//each row will hold the different cheese ids in that combo
 $result = $conn->prepare("SELECT cheese_id FROM tbl_combos");
 $result->execute();
-
 $data = $result->fetchAll();
 
+//clear result
 unset($result);
+
+//map to hold all ids and how many times they appear
 $values = [];
+//number of different ids
 $numEntries = 0;
+//go through all rows
 for ($i = 0; $i < sizeof($data); $i++){
+	//remove extra characters
 	$temp = str_replace('"[', "", $data[$i][0]);
 	$temp = str_replace(']"', "", $temp);
+	//split the ids at commas
 	$splitValues = explode(',', $temp);
+	//go through split ids
 	for ($j = 0; $j < sizeof($splitValues); $j++){
+		//if the id already exists, add one to its value
 		if (array_key_exists($splitValues[$j], $values)){
 			$values[$splitValues[$j]] = $values[$splitValues[$j]] + 1;
 		}else{
+			//else add the id to a key in the map
 			$values[$splitValues[$j]] = 1;
+			//counter
 			$numEntries++;
 		}
 	}
 }
 
-//All data is counted twice so I have to go back and divide everything by 2
+//All data is counted twice so I have to go back and divide values by 2
 foreach ($values as &$temp) {
     $temp = $temp / 2;
 }
 
+//sorts all the keys by value. This will put the 3 most common ids first in the map
 arsort($values);
 
 $jsonString = $jsonString . '"cheese":[';
 
+//go through sorted map
 $i = 0;
 foreach ($values as $key => $value){
 
+	//if this is the first loop, don't add a comma
 	if ($i != 0){
 		$jsonString = $jsonString . ',';
 	}
 
+	//get information from the ingredient table with the corresponding id
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_cheese WHERE id = :id");
 	$result->execute(array(':id' => $key));
-
 	$innerData = $result->fetchAll();
 
+	//clear result
 	unset($result);
 
+	//add information to json string
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 
+	//if three ingredients have been gone through, break
 	if ($i == 2){
 		break;
 	}
+	//counter
 	$i++;
 }
 
@@ -270,57 +284,76 @@ $jsonString = $jsonString . '],';
 
 //=========================================================================================
 //===========================================================================================
+//query to get all vegetable ids in the combos table
+//each row will hold the different vegetable ids in that combo
 //vegetable
 $result = $conn->prepare("SELECT vegetable_id FROM tbl_combos");
 $result->execute();
-
 $data = $result->fetchAll();
 
+//clear result
 unset($result);
+
+//map to hold ids as keys and their counts as values
 $values = [];
+//number of different ingredients
 $numEntries = 0;
+//go through rows
 for ($i = 0; $i < sizeof($data); $i++){
+	//remove extra characters
 	$temp = str_replace('"[', "", $data[$i][0]);
 	$temp = str_replace(']"', "", $temp);
+	//split ids by commas
 	$splitValues = explode(',', $temp);
+	//go through split ids
 	for ($j = 0; $j < sizeof($splitValues); $j++){
+		//if the id is already a key
 		if (array_key_exists($splitValues[$j], $values)){
+			//add one to its value
 			$values[$splitValues[$j]] = $values[$splitValues[$j]] + 1;
 		}else{
+			//else add it to the map
 			$values[$splitValues[$j]] = 1;
 			$numEntries++;
 		}
 	}
 }
 
-//All data is counted twice so I have to go back and divide everything by 2
+//All data is counted twice so I have to go back and divide values by 2
 foreach ($values as &$temp) {
     $temp = $temp / 2;
 }
 
+//sorts all the keys by value. This will put the 3 most common ids first in the map
 arsort($values);
 
 $jsonString = $jsonString . '"vegetable":[';
 
+//go through sorted map
 $i = 0;
 foreach ($values as $key => $value){
 
+	//if this is the first loop, don't add a comma to json string
 	if ($i != 0){
 		$jsonString = $jsonString . ',';
 	}
 
+	//get the information on the ingredient from the ingredient with the same id in the table
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_vegetable WHERE id = :id");
 	$result->execute(array(':id' => $key));
-
 	$innerData = $result->fetchAll();
 
+	//clear result
 	unset($result);
 
+	//add the information to the json string
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 
+	//if three ingredients have been gone through, break out of the loop
 	if ($i == 2){
 		break;
 	}
+	//counter
 	$i++;
 }
 
@@ -329,56 +362,74 @@ $jsonString = $jsonString . '],';
 //=========================================================================================
 //===========================================================================================
 //sauce
+//query to get all sauce ids in the combos table
+//each row will hold the different sauce ids in that combo
 $result = $conn->prepare("SELECT sauce_id FROM tbl_combos");
 $result->execute();
-
 $data = $result->fetchAll();
 
+//clear result
 unset($result);
+
+//map to hold ids as keys and their count as values
 $values = [];
+//number of different ingredients
 $numEntries = 0;
+//go through all rows
 for ($i = 0; $i < sizeof($data); $i++){
+	//remove extra characters
 	$temp = str_replace('"[', "", $data[$i][0]);
 	$temp = str_replace(']"', "", $temp);
+	//split ids by commas
 	$splitValues = explode(',', $temp);
+	//go through split ids
 	for ($j = 0; $j < sizeof($splitValues); $j++){
+		//if id is already a key, add one to its value
 		if (array_key_exists($splitValues[$j], $values)){
 			$values[$splitValues[$j]] = $values[$splitValues[$j]] + 1;
 		}else{
+			//else add id to map
 			$values[$splitValues[$j]] = 1;
 			$numEntries++;
 		}
 	}
 }
 
-//All data is counted twice so I have to go back and divide everything by 2
+//All data is counted twice so I have to go back and divide values by 2
 foreach ($values as &$temp) {
     $temp = $temp / 2;
 }
 
+//sorts all the keys by value. This will put the 3 most common ids first in the map
 arsort($values);
 
 $jsonString = $jsonString . '"sauce":[';
 
+//go through the sorted map
 $i = 0;
 foreach ($values as $key => $value){
 
+	//if this is the first loop, don't add a comma to the string
 	if ($i != 0){
 		$jsonString = $jsonString . ',';
 	}
 
+	//get infromstion from the ingredient in the table with the same id
 	$result = $conn->prepare("SELECT * FROM tbl_ingredient_sauce WHERE id = :id");
 	$result->execute(array(':id' => $key));
-
 	$innerData = $result->fetchAll();
 
+	//clear result
 	unset($result);
 
+	//add the infromation to the json string
 	$jsonString = $jsonString . '{'. '"rank": "' . ($i+1) . '", "name": "' . $innerData[0]['name'] . '", "calories": "' . $innerData[0]['calories'] . '", "pictureURL": "' . $innerData[0]['pictureURL'] . '"}';
 
+	//if three ingredients have been added, break out of loop
 	if ($i == 2){
 		break;
 	}
+	//counter
 	$i++;
 }
 
@@ -386,12 +437,14 @@ $jsonString = $jsonString . ']';
 
 //=========================================================================================
 
-
+//close the json string
 $jsonString = $jsonString . '}}';
 
+//turn string into json object
 $jsonObject = json_encode($jsonString);
 $jsonObject = json_decode($jsonObject);
 
+//return json object
 echo($jsonObject);
 
 ?>

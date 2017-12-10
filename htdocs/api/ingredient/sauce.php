@@ -4,7 +4,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "li988168";
 $dbname = "gredients";
 
 // Create connection

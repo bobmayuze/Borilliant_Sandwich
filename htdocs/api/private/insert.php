@@ -2,7 +2,7 @@
 //insert.php  
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "li988168";
 $dbname = "gredients";
 
 // Create connection

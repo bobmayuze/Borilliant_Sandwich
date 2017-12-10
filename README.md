@@ -49,7 +49,7 @@ $ ./opt/lampp/xampp start
 
 ## Download the project, if you don't have access it, you can 
 
-#Purpose
+# Purpose
 The purpose of this project is to help people construct and learn about 
 new types of sandwiches. This can not only help people find new sandwiches
 they can enjoy, but can shorten lines at sandwich eateries all over the

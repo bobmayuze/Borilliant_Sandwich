@@ -60,30 +60,15 @@ so the user can know how healthy they're eating. With our website, sandwich
 lines will be shorter, people can find new types of sandwiches they may enjoy,
 and people can learn more nutrition facts about what they eat.
 
-# TODO 
-- Backend
-    - Fix the allProducts.php(Honghao)
-- Frontend
-    - New footer(Chelsea)
-    - Put random name for generated combos(Chelsea)
-    - Make generate button into an actual button looklike(Chelsea)
-    - Link to user login, and analytics (Yuze)
-- WriteUp
-    - Fix the English(Jonathon, Andrew)
-    - Purpose of the project (Jonathon, Andrew)
-    - How to setup(Yuze)
-    - Fixing code structure(Yuze)
-    - Comment code($creater)
-
-# Progress
-1.DB migtation
+# Milestones
+1.DB migration
     - tbl_ingredient_vegetable (Andrew)
     - tbl_ingredient_meat (Andrew)
     - tbl_ingredient_cheese (Chelsa)
     - tbl_ingredient_sauce (Hangen)
     - tbl_ingredient_bread (Hangen)
 
-2.User framework implementaion 
+2.User framework implementation 
     - Sign up
     - Sign out
     - Log in

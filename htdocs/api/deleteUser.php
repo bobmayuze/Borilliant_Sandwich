@@ -1,3 +1,5 @@
+// Sets a user to inactive in order to delete it 
+// Takes in an array
 <?php
 
 header("Access-Control-Allow-Origin: *");

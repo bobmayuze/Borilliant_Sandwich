@@ -1,6 +1,7 @@
+// Adds a sandwich to the combos_table
 <?PHP
     
-    include('user/connect.php');//Conncet to the database
+    include('../user/connect.php');//Conncet to the database
 
     //print_r($_POST);
 

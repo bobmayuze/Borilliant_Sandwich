@@ -273,7 +273,7 @@ angular.module('App').controller('AppCtrl', function(
     }
     // because unescape has been deprecated, replaced with decodeURI
     //return unescape(dc.substring(begin + prefix.length, end));
-	alert(decodeURI(dc.substring(begin + prefix.length, end)));
+	//alert(decodeURI(dc.substring(begin + prefix.length, end)));
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
@@ -411,7 +411,7 @@ angular.module('App').controller('AppCtrl', function(
 	selectElementContents(document.getElementById('name'));
 	
 	// Posts to the db the completed sandwich
-	$http.post('../add_sandwich.php', {'comboJSON':$scope.solution, 'username':getCookie("usermail")})
+	$http.post('../api/add_sandwich.php', {'comboJSON':$scope.solution, 'username':getCookie("usermail")})
       .success(function(data, status, headers, config) {
         console.log(status + ' - ' + data);
       }).error(function(data, status, headers, config) {

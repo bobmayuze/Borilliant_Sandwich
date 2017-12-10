@@ -14,7 +14,7 @@ $  docker run -tid --name itws bobmayuze/itws_2110:latest /bin/zsh
 ```
 To start a container. You may also need [kitematic](https://kitematic.com/) to do port fowarding. Forward the port 80 from container to the host.
 
-Then, you may docker cp to copy the file. Here is an example how I do use this command. For more dockr command, check out [Docker](https://www.docker.com/)
+Then, you may use docker cp to copy the file. Here is an example how I use this command. For more dockr commands, check out [Docker](https://www.docker.com/)
 
 ```
 $ docker cp /Users/user/Documents/Projects/Borilliant_Sandwich/htdocs itws:/opt/lampp/
@@ -28,7 +28,7 @@ $ git clone https://github.com/bobmayuze/Borilliant_Sandwich
 
 ```
 
-2. Copy and paste the whole htdocs folder after delete the original one
+2. Copy and paste the whole htdocs folder after deleting the original one
 
 3. Start XAMPP 
 For docker, after run 
@@ -41,18 +41,18 @@ type
 $ ./opt/lampp/xampp start
 ```
 
-4. Go to localhost/phpmyadmin, and create a new db called "gredients". Choose the db, and import the file in db_migration/migration.sql
+4. Go to localhost/phpmyadmin, and import the file in db_migration/migration.sql
 
 5. Go to the localhost and you are all set.
 
 
 
-## Download the project, if you don't have access it, you can 
+## Download the project, if you don't already have it, you can download it from this repo 
 
 # Purpose
 The purpose of this project is to help people construct and learn about 
-new types of sandwiches. This can not only help people find new sandwiches
-they can enjoy, but can shorten lines at sandwich eateries all over the
+new types of sandwiches. This can not only help people find new sandwiches that
+they can enjoy, but can also shorten lines at sandwich eateries all over the
 world. People can plan what sandwich they want in advance at home or in 
 line, allowing them to know exactly what they want to eat when it's their
 turn to order. The website also gives calorie information on all ingredients

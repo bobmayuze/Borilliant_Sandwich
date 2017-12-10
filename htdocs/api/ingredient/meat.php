@@ -14,8 +14,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+//get all information from meat table
 $result = $conn->query("SELECT * FROM tbl_ingredient_meat");
 
+//format information into json
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
@@ -27,5 +29,6 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
 $outp ='{"records":['.$outp.']}';
 $conn->close();
 
+//return information in json format
 echo($outp);
 ?>

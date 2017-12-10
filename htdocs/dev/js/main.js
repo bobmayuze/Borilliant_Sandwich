@@ -1,3 +1,4 @@
+// This function gets the username from the cookie
 function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
@@ -23,6 +24,7 @@ var usermail = getCookie("usermail");
 var userName = "XD";
 var userLogedIn = false;
 
+// If no one is logged in show generic name
 if (!usermail) { 
   userName = "Tourst";
 } else {
@@ -68,6 +70,7 @@ angular.module('App').controller('AppCtrl', function(
     else list.push(record);
   };  
 
+  // The following gets pull the data for the page
   $http.get("../api/ingredient/bread.php")
     .then(function (response) {$scope.breadData = response.data.records;
 		$scope.breadData.forEach(function(item) {
@@ -236,12 +239,14 @@ angular.module('App').controller('AppCtrl', function(
 	
   };
   
+  // Hides the solution area initially
   var init = function() {
 	document.getElementById('solution').className = "center ng-hide";
   }
   
   init();
   
+  // random Integer return
   function getRandomInt(min, max) {
 	if (max < min) {
 		return 0;
@@ -249,6 +254,7 @@ angular.module('App').controller('AppCtrl', function(
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
+  // Gets the username from the cookie
   function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
@@ -271,14 +277,17 @@ angular.module('App').controller('AppCtrl', function(
     return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
+  // Arrays for random name generation
   var adjectives = ["adamant", "adroit", "amatory", "animistic", "antic", "arcadian", "baleful", "bellicose", "bilious", "boorish", "calamitous", "caustic", "cerulean", "comely", "concomitant", "contumacious", "corpulent", "crapulous", "defamatory", "didactic", "dilatory", "dowdy", "efficacious", "effulgent", "egregious", "endemic", "equanimous", "execrable", "fastidious", "feckless", "fecund", "friable", "fulsome", "garrulous", "guileless", "gustatory", "heuristic", "histrionic", "hubristic", "incendiary", "insidious", "insolent", "intransigent", "inveterate", "invidious", "irksome", "jejune", "jocular", "judicious", "lachrymose", "limpid", "loquacious", "luminous", "mannered", "mendacious", "meretricious", "minatory", "mordant", "munificent", "nefarious", "noxious", "obtuse", "parsimonious", "pendulous", "pernicious", "pervasive", "petulant", "platitudinous", "precipitate", "propitious", "puckish", "querulous", "quiescent", "rebarbative", "recalcitant", "redolent", "rhadamanthine", "risible", "ruminative", "sagacious", "salubrious", "sartorial", "sclerotic", "serpentine", "spasmodic", "strident", "taciturn", "tenacious", "tremulous", "trenchant", "turbulent", "turgid", "ubiquitous", "uxorious", "verdant", "voluble", "voracious", "wheedling", "withering", "zealous"];
   var nouns = ["ninja", "chair", "pancake", "statue", "unicorn", "rainbows", "laser", "senor", "bunny", "captain", "nibblets", "cupcake", "carrot", "gnomes", "glitter", "potato", "salad", "toejam", "curtains", "beets", "toilet", "exorcism", "stick figures", "mermaid eggs", "sea barnacles", "dragons", "jellybeans", "snakes", "dolls", "bushes", "cookies", "apples", "ice cream", "ukulele", "kazoo", "banjo", "opera singer", "circus", "trampoline", "carousel", "carnival", "locomotive", "hot air balloon", "praying mantis", "animator", "artisan", "artist", "colorist", "inker", "coppersmith", "director", "designer", "flatter", "stylist", "leadman", "limner", "make-up artist", "model", "musician", "penciller", "producer", "scenographer", "set decorator", "silversmith", "teacher", "auto mechanic", "beader", "bobbin boy", "clerk of the chapel", "filling station attendant", "foreman", "maintenance engineering", "mechanic", "miller", "moldmaker", "panel beater", "patternmaker", "plant operator", "plumber", "sawfiler", "shop foreman", "soaper", "stationary engineer", "wheelwright", "woodworkers"];
 
+  // random name generation for single word
   function randomEl(list) {
     var i = Math.floor(Math.random() * list.length);
     return list[i];
   }
-
+  
+  // creates full random name
   function selectElementContents(el) {
     var range = document.createRange();
     range.selectNodeContents(el);
@@ -286,8 +295,6 @@ angular.module('App').controller('AppCtrl', function(
     sel.removeAllRanges();
     sel.addRange(range);
   }
-  
-  // takes in an id. Makes the qty go up or adds it to the id array
   
   // Getting result
   $scope.randomize = function() {
@@ -313,16 +320,13 @@ angular.module('App').controller('AppCtrl', function(
 	var currid;
 	// Bread, only one
 	if ($scope.bSelect.length == 0) {
-	  //$scope.solution.bread_qty = "None?";
-	  //$scope.solution.bread_id = 0;
 	} else {
 	  $scope.solution.bread_qty = $scope.bSelect[luck];
 	  $scope.solution.bread_id = $scope.bSelectId[luck];
 	}
 	// Meat
 	if ($scope.mSelect.length == 0) {
-	  //$scope.solution.meat_qty.push("None?");
-	  //$scope.solution.meat_id.push(0);
+	  
 	} else {
 	  repeat = getRandomInt(1, $scope.mSelect.length);
       for (i = 0; i < repeat; ++i) {
@@ -339,8 +343,7 @@ angular.module('App').controller('AppCtrl', function(
 	}
 	// Cheese
 	if ($scope.cSelect.length == 0) {
-	  //$scope.solution.cheese_qty.push("None?");
-	  //$scope.solution.cheese_id.push(0);
+	  
 	} else {
 	  repeat = getRandomInt(1, $scope.cSelect.length);
     for (i = 0; i < repeat; ++i) {
@@ -357,8 +360,7 @@ angular.module('App').controller('AppCtrl', function(
 	}
 	// Veggies
 	if ($scope.vSelect.length == 0) {
-	  //$scope.solution.vegetable_qty.push("None?");
-	  //$scope.solution.vegetable_id.push(0);
+	  
 	} else {
 	  repeat = getRandomInt(1, $scope.vSelect.length);
       for (i = 0; i < repeat; ++i) {
@@ -375,8 +377,7 @@ angular.module('App').controller('AppCtrl', function(
 	}
 	// Sauce
 	if ($scope.sSelect.length == 0) {
-	  //$scope.solution.sauce_qty.push("None?");
-	  //$scope.solution.sauce_id.push(0);
+	  
 	} else {
 	  repeat = getRandomInt(1, $scope.sSelect.length);
       for (i = 0; i < repeat; ++i) {
@@ -409,6 +410,7 @@ angular.module('App').controller('AppCtrl', function(
 	document.getElementById('name').innerHTML = randomEl(adjectives)+' '+randomEl(nouns);
 	selectElementContents(document.getElementById('name'));
 	
+	// Posts to the db the completed sandwich
 	$http.post('../add_sandwich.php', {'comboJSON':$scope.solution, 'username':getCookie("usermail")})
       .success(function(data, status, headers, config) {
         console.log(status + ' - ' + data);

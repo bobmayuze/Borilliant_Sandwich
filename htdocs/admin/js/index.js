@@ -56,7 +56,7 @@ angular.module('App').controller('AppCtrl', function(
     window.location.href=message;
   };  
 
-
+  // Gets active users from the database so that the page prints out data
   $http.get("../api/activeUsers.php")
     .then(function (response) {
       $scope.userData = response.data.results;
@@ -96,7 +96,9 @@ angular.module('App').controller('AppCtrl', function(
     }
 
   }
-  
+ 
+ // Goes through the list of users on the page, adds ones that were checked to be
+ // deleted to an array, sends the array to deleteUser
  $scope.deletePerson = function() {
     var oldPeople = angular.copy($scope.userData);
     var remove = [];

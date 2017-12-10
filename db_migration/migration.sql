@@ -19,14 +19,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `gredients`
 --
-
+CREATE DATABASE `gredients`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_combos`
 --
 
-CREATE TABLE `tbl_combos` (
+CREATE TABLE `gredients`.`tbl_combos` (
   `id` int(11) NOT NULL,
   `creater_id` int(11) NOT NULL DEFAULT '999999',
   `bread_id` int(11) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `tbl_combos` (
 -- Dumping data for table `tbl_combos`
 --
 
-INSERT INTO `tbl_combos` (`id`, `creater_id`, `bread_id`, `bread_qty`, `meat_id`, `meat_qty`, `cheese_id`, `cheese_qty`, `vegetable_id`, `vegetable_qty`, `sauce_id`, `sauce_qty`) VALUES
+INSERT INTO `gredients`.`tbl_combos` (`id`, `creater_id`, `bread_id`, `bread_qty`, `meat_id`, `meat_qty`, `cheese_id`, `cheese_qty`, `vegetable_id`, `vegetable_qty`, `sauce_id`, `sauce_qty`) VALUES
 (9, 9999, 3, 0, '"[3]"', '"[1]"', '"[3]"', '"[1]"', '"[8]"', '"[1]"', '"[8,3]"', '"[1,1]"'),
 (10, 9999, 3, 0, '"[3,7]"', '"[1,2]"', '"[3]"', '"[1]"', '"[7]"', '"[1]"', '"[8]"', '"[1]"'),
 (11, 9999, 3, 0, '"[3]"', '"[4]"', '"[3]"', '"[1]"', '"[2]"', '"[1]"', '"[8]"', '"[1]"'),
@@ -76,7 +76,7 @@ INSERT INTO `tbl_combos` (`id`, `creater_id`, `bread_id`, `bread_qty`, `meat_id`
 -- Table structure for table `tbl_ingredient_bread`
 --
 
-CREATE TABLE `tbl_ingredient_bread` (
+CREATE TABLE `gredients`.`tbl_ingredient_bread` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `calories` int(11) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE `tbl_ingredient_bread` (
 -- Dumping data for table `tbl_ingredient_bread`
 --
 
-INSERT INTO `tbl_ingredient_bread` (`id`, `name`, `calories`, `pictureURL`) VALUES
+INSERT INTO `gredients`.`tbl_ingredient_bread` (`id`, `name`, `calories`, `pictureURL`) VALUES
 (1, 'wheat_bread', 69, 'http://img.allw.mn/content/2013/11/24210219_6761.jpg'),
 (2, 'white_bread', 79, 'http://urbanwired.com/health/wp-content/uploads/sites/2/2017/01/e30eb4f2d73f1a3cc3614ba54f17b5e6.jpg'),
 (3, 'potato_bread', 85, 'https://cdn2.tmbi.com/TOH/Images/Photos/37/300x300/exps15220_RDS1338202D53A.jpg'),
@@ -105,7 +105,7 @@ INSERT INTO `tbl_ingredient_bread` (`id`, `name`, `calories`, `pictureURL`) VALU
 -- Table structure for table `tbl_ingredient_cheese`
 --
 
-CREATE TABLE `tbl_ingredient_cheese` (
+CREATE TABLE `gredients`.`tbl_ingredient_cheese` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `calories` int(11) NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `tbl_ingredient_cheese` (
 -- Dumping data for table `tbl_ingredient_cheese`
 --
 
-INSERT INTO `tbl_ingredient_cheese` (`id`, `name`, `calories`, `pictureURL`) VALUES
+INSERT INTO `gredients`.`tbl_ingredient_cheese` (`id`, `name`, `calories`, `pictureURL`) VALUES
 (1, 'swiss', 106, 'https://boygeniusreport.files.wordpress.com/2015/05/swiss_cheese.jpg?quality=98&strip=all'),
 (2, 'provolone', 96, 'http://www.murrayscheese.com/site/images/items/20019700000.0.jpg?resizeid=3&resizeh=600&resizew=600'),
 (3, 'american', 104, 'http://thumbs.ifood.tv/files/images/editor/images/American%20Cheese.jpg'),
@@ -128,7 +128,7 @@ INSERT INTO `tbl_ingredient_cheese` (`id`, `name`, `calories`, `pictureURL`) VAL
 -- Table structure for table `tbl_ingredient_meat`
 --
 
-CREATE TABLE `tbl_ingredient_meat` (
+CREATE TABLE `gredients`.`tbl_ingredient_meat` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `calories` int(11) NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE `tbl_ingredient_meat` (
 -- Dumping data for table `tbl_ingredient_meat`
 --
 
-INSERT INTO `tbl_ingredient_meat` (`id`, `name`, `calories`, `pictureURL`) VALUES
+INSERT INTO `gredients`.`tbl_ingredient_meat` (`id`, `name`, `calories`, `pictureURL`) VALUES
 (1, 'turkey', 22, 'http://cdn-mf0.heartyhosting.com/sites/mensfitness.com/files/styles/gallery_slideshow_image/public/sliced-turkey.jpg'),
 (2, 'roast_beef', 35, 'https://images.eatthismuch.com/site_media/img/99969_ldementhon_2d356fa3-a0af-49a3-b7ce-49d5ae8f4a0b.png'),
 (3, 'honey_ham', 34, 'http://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/8/14/0/WU1104H_Honey-Glazed-Ham_s4x3.jpg.rend.hgtvcom.616.462.suffix/1439583024885.jpeg'),
@@ -157,7 +157,7 @@ INSERT INTO `tbl_ingredient_meat` (`id`, `name`, `calories`, `pictureURL`) VALUE
 -- Table structure for table `tbl_ingredient_sauce`
 --
 
-CREATE TABLE `tbl_ingredient_sauce` (
+CREATE TABLE `gredients`.`tbl_ingredient_sauce` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `calories` int(11) NOT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE `tbl_ingredient_sauce` (
 -- Dumping data for table `tbl_ingredient_sauce`
 --
 
-INSERT INTO `tbl_ingredient_sauce` (`id`, `name`, `calories`, `pictureURL`) VALUES
+INSERT INTO `gredients`.`tbl_ingredient_sauce` (`id`, `name`, `calories`, `pictureURL`) VALUES
 (1, 'ranch_dressing', 73, 'https://www.jaysbakingmecrazy.com/wp-content/uploads/2016/01/paleo_ranch2.jpg'),
 (2, 'caesar_dressing', 78, 'https://target.scene7.com/is/image/Target/12946485?wid=520&hei=520&fmt=pjpeg'),
 (3, 'blue_cheese_dressing', 70, 'https://i5.walmartimages.com/asr/def10768-4e00-4f82-80f7-3fcdf1e163ab_1.8b796cba97178720ccbfa038715ca0d5.jpeg'),
@@ -186,7 +186,7 @@ INSERT INTO `tbl_ingredient_sauce` (`id`, `name`, `calories`, `pictureURL`) VALU
 -- Table structure for table `tbl_ingredient_vegetable`
 --
 
-CREATE TABLE `tbl_ingredient_vegetable` (
+CREATE TABLE `gredients`.`tbl_ingredient_vegetable` (
   `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
   `calories` int(11) NOT NULL,
@@ -197,7 +197,7 @@ CREATE TABLE `tbl_ingredient_vegetable` (
 -- Dumping data for table `tbl_ingredient_vegetable`
 --
 
-INSERT INTO `tbl_ingredient_vegetable` (`id`, `name`, `calories`, `pictureURL`) VALUES
+INSERT INTO `gredients`.`tbl_ingredient_vegetable` (`id`, `name`, `calories`, `pictureURL`) VALUES
 (1, 'lettuce', 4, 'https://www.markon.com/sites/default/files/styles/large/public/pi_photos/Green_Leaf_Lettuce_Hero.jpg'),
 (2, 'tomato', 4, 'http://growyourowngroceries.org/wp-content/uploads/2015/07/bigstock-Red-sliced-tomato-90434192-300x171.jpg'),
 (3, 'onion', 5, 'https://media.istockphoto.com/photos/sliced-red-onion-picture-id514436947?k=6&m=514436947&s=612x612&w=0&h=SQojzCECCI06GDd-HMMDb1WCrgmhnWMaJydfsbALJJk='),
@@ -215,7 +215,7 @@ INSERT INTO `tbl_ingredient_vegetable` (`id`, `name`, `calories`, `pictureURL`) 
 -- Table structure for table `tbl_user`
 --
 
-CREATE TABLE `tbl_user` (
+CREATE TABLE `gredients`.`tbl_user` (
   `id` int(11) NOT NULL,
   `username` varchar(512) NOT NULL,
   `password` varchar(512) NOT NULL,
@@ -227,12 +227,12 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `username`, `password`, `nickname`, `activate`) VALUES
+INSERT INTO `gredients`.`tbl_user` (`id`, `username`, `password`, `nickname`, `activate`) VALUES
 (1, 'admin', '123456', NULL, 1),
 (2, 'admin2', '123456', NULL, 0),
 (3, 'yzue@123.com', '123456', NULL, 0),
 (4, 'ac@1.com', '123445', NULL, 1),
-(5, 'yuze@123.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1),
+(5, 'yuze@123.com', 'e10adc3949ba59abbe56e057f20f883e', 'ADMIN', 1),
 (9999, 'ADMIN', 'e10adc3949ba59abbe56e057f20f883e', 'ADMIN', 1),
 (10000, 'takahashi@localhost.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1);
 
@@ -243,7 +243,7 @@ INSERT INTO `tbl_user` (`id`, `username`, `password`, `nickname`, `activate`) VA
 --
 -- Indexes for table `tbl_combos`
 --
-ALTER TABLE `tbl_combos`
+ALTER TABLE `gredients`.`tbl_combos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `creater_id` (`creater_id`),
   ADD KEY `bread_id` (`bread_id`),
@@ -255,37 +255,37 @@ ALTER TABLE `tbl_combos`
 --
 -- Indexes for table `tbl_ingredient_bread`
 --
-ALTER TABLE `tbl_ingredient_bread`
+ALTER TABLE `gredients`.`tbl_ingredient_bread`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_ingredient_cheese`
 --
-ALTER TABLE `tbl_ingredient_cheese`
+ALTER TABLE `gredients`.`tbl_ingredient_cheese`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_ingredient_meat`
 --
-ALTER TABLE `tbl_ingredient_meat`
+ALTER TABLE `gredients`.`tbl_ingredient_meat`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_ingredient_sauce`
 --
-ALTER TABLE `tbl_ingredient_sauce`
+ALTER TABLE `gredients`.`tbl_ingredient_sauce`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_ingredient_vegetable`
 --
-ALTER TABLE `tbl_ingredient_vegetable`
+ALTER TABLE `gredients`.`tbl_ingredient_vegetable`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_user`
 --
-ALTER TABLE `tbl_user`
+ALTER TABLE `gredients`.`tbl_user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -295,37 +295,37 @@ ALTER TABLE `tbl_user`
 --
 -- AUTO_INCREMENT for table `tbl_combos`
 --
-ALTER TABLE `tbl_combos`
+ALTER TABLE `gredients`.`tbl_combos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `tbl_ingredient_bread`
 --
-ALTER TABLE `tbl_ingredient_bread`
+ALTER TABLE `gredients`.`tbl_ingredient_bread`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_ingredient_cheese`
 --
-ALTER TABLE `tbl_ingredient_cheese`
+ALTER TABLE `gredients`.`tbl_ingredient_cheese`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_ingredient_meat`
 --
-ALTER TABLE `tbl_ingredient_meat`
+ALTER TABLE `gredients`.`tbl_ingredient_meat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_ingredient_sauce`
 --
-ALTER TABLE `tbl_ingredient_sauce`
+ALTER TABLE `gredients`.`tbl_ingredient_sauce`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_ingredient_vegetable`
 --
-ALTER TABLE `tbl_ingredient_vegetable`
+ALTER TABLE `gredients`.`tbl_ingredient_vegetable`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
-ALTER TABLE `tbl_user`
+ALTER TABLE `gredients`.`tbl_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
 --
 -- Constraints for dumped tables
@@ -334,7 +334,7 @@ ALTER TABLE `tbl_user`
 --
 -- Constraints for table `tbl_combos`
 --
-ALTER TABLE `tbl_combos`
+ALTER TABLE `gredients`.`tbl_combos`
   ADD CONSTRAINT `tbl_combos_ibfk_1` FOREIGN KEY (`creater_id`) REFERENCES `tbl_user` (`id`),
   ADD CONSTRAINT `tbl_combos_ibfk_2` FOREIGN KEY (`bread_id`) REFERENCES `tbl_ingredient_bread` (`id`);
 

@@ -1,4 +1,5 @@
 <?php
+    //Creates PDO connection to our database
     $db_name="gredients";
     $db_username="root";
     $db_password="";

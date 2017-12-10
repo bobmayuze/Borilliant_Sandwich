@@ -29,7 +29,7 @@ var userName = "XD";
 var userLogedIn = false;
 
 if (!usermail) { 
-  userName = "Tourst";
+  userName = "Tourist";
 } else {
   userLogedIn = true;
   userName = decodeURIComponent(usermail);

@@ -1,3 +1,7 @@
+# Team 7
+
+Jonathan Caicedo, Chelsea Carlson, Andrew Leaf, Honghao Li, Yuze Ma 
+
 # Borilliant_Sandwich
 Repo for a great sandwich statistic site
 

@@ -1,9 +1,7 @@
-# Team 7
-
-Jonathan Caicedo, Chelsea Carlson, Andrew Leaf, Honghao Li, Yuze Ma 
-
 # Borilliant_Sandwich
 Repo for a great sandwich statistic site
+
+Team 7: Jonathan Caicedo, Chelsea Carlson, Andrew Leaf, Honghao Li, Yuze Ma 
 
 # Getting Started
 *This project is developed with XAMPP, thus XAMPP is recommended for deploying and testing. Go to [XAMPP](https://www.apachefriends.org/index.html) for more information.*
